@@ -71,3 +71,4 @@ All in all, I think you have a great setup here for 40 hours of work. Your MVP i
 * 11:17 researching Semantic UI: https://react.semantic-ui.com/
 * 12:09 creating diagram
 * 1:31 researching firebase and C#/javascript integration
+* 2:06 diagramming
