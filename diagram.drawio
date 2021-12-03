@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="zaeMc1xhCrONg7oMz10p" name="Page-1">
-        <mxGraphModel dx="3307" dy="2250" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#4D4D4D" math="0" shadow="0">
+        <mxGraphModel dx="3996" dy="2743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#4D4D4D" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -25,13 +25,16 @@
                 <mxCell id="7" value="Back to Character" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
                     <mxGeometry x="-50" y="700" width="330" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="30" value="" style="edgeStyle=none;html=1;fontSize=20;" edge="1" parent="1" source="8" target="29">
+                <mxCell id="58" value="" style="edgeStyle=none;html=1;fontSize=18;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="9" target="35">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-50" y="630" as="sourcePoint"/>
+                        <mxPoint x="-130" y="660" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="60" value="" style="edgeStyle=none;html=1;fontSize=18;" edge="1" parent="1" source="9" target="59">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="8" value="Load Character" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
-                    <mxGeometry x="-50" y="630" width="330" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="9" value="Save Character" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
+                <mxCell id="9" value="Save/Load Character" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
                     <mxGeometry x="-50" y="560" width="330" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="24" value="" style="edgeStyle=none;html=1;fontSize=20;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="11" target="25">
@@ -76,35 +79,76 @@
                 <mxCell id="26" value="New Character form, cycle through views with counter." style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
                     <mxGeometry x="315" y="420" width="940" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" value="Saved Character List" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
-                    <mxGeometry x="310" y="630" width="940" height="60" as="geometry"/>
-                </mxCell>
                 <mxCell id="32" value="Character Info Pages" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
-                    <mxGeometry x="310" y="700" width="940" height="60" as="geometry"/>
+                    <mxGeometry x="315" y="700" width="940" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="35" value="Character Sidebar - shows charName" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=20;" vertex="1" parent="1">
-                    <mxGeometry x="-439" y="-120" width="350" height="890" as="geometry"/>
+                <mxCell id="38" value="&lt;ul&gt;&lt;li&gt;&lt;span&gt;Inspiration Marker&lt;/span&gt;&lt;/li&gt;&lt;li&gt;AC calculated from dex/armor/bonuses&lt;/li&gt;&lt;li&gt;Initiative&lt;/li&gt;&lt;li&gt;Proficiency Bonus&lt;/li&gt;&lt;li&gt;Speed&lt;/li&gt;&lt;li&gt;Ability Scoresd (SDCIWC) and bonuses&lt;/li&gt;&lt;li&gt;HP min/max (Space for temp hit points or negative max HP)&lt;/li&gt;&lt;li&gt;Hit Dice (1d10 + 3 per lvl, etc)&lt;/li&gt;&lt;li&gt;Condition List - Allow player to add and remove&lt;/li&gt;&lt;li&gt;2 Equipped Weapons (name, atk bonus, damage)&lt;/li&gt;&lt;li&gt;Death Saves&lt;/li&gt;&lt;li&gt;Saving Throws (add proficiency bonus to saving throws per class)&lt;/li&gt;&lt;li&gt;Spell save DC&lt;/li&gt;&lt;li&gt;Passive Perception&lt;/li&gt;&lt;li&gt;Custom fields to track character conditions (poisoned, etc)&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="-1360" y="-520" width="635" height="460" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="Character info header (Class/Subclass/Level, Background, Player Name, Race, Alignment, current XP/Next Level XP" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="315" y="-90" width="945" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="&lt;ul&gt;&lt;li&gt;&lt;span&gt;weapons/armor/shields w/stats&lt;/span&gt;&lt;/li&gt;&lt;li&gt;misc inventory item - weight - total (optional)&lt;/li&gt;&lt;li&gt;search box that uses API to look up details on items and add them&lt;/li&gt;&lt;li&gt;equipped armor (adds AC, account for bonus)&lt;/li&gt;&lt;li&gt;equipped shield (adds AC, account for bonus)&lt;/li&gt;&lt;li&gt;equipped weapons (adds to main)&lt;/li&gt;&lt;li&gt;magic item tracker, limit to 3 attuned (account for artificer skills)&lt;/li&gt;&lt;li&gt;GP (option to track in PP/EP/GP/SP/CP)&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="-1360" y="-50" width="640" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="Options" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+                    <mxGeometry x="-50" y="350" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="&lt;ul&gt;&lt;li&gt;&lt;span&gt;Character skills with accurate proficiency bonus (account for 2x rogue(1/6) and bard(3/10) expertise for two skills)&lt;/span&gt;&lt;/li&gt;&lt;li&gt;Str: Athletics&lt;/li&gt;&lt;li&gt;Dex: Acrobatics, Sleight of Hand, Stealth&lt;/li&gt;&lt;li&gt;Int: Arcana, History, Investigation, Nature, Religion&lt;/li&gt;&lt;li&gt;Wis: Animal Handling, Insight, Medicine, Perception, Survival&lt;/li&gt;&lt;li&gt;Cha: Deception, Intimidation, Performance, Persuasion&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="-1350" y="210" width="630" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="&lt;ul&gt;&lt;li&gt;&lt;span&gt;Ability list (lookup from https://www.dnd5eapi.co/api/classes/{class}/features)&lt;/span&gt;&lt;/li&gt;&lt;li&gt;Attempt to make API calls for all to propagate list, if not may have to add search box and ability to add custom fields.&lt;/li&gt;&lt;li&gt;Feats (lookup w/API) (option)&lt;/li&gt;&lt;li&gt;Racial Traits&lt;/li&gt;&lt;li&gt;Background abilities&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="-1450" y="500" width="730" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="&lt;ul&gt;&lt;li&gt;&lt;span&gt;Physical description: Age, Height, Weight, Eyes, Skin, Hair&lt;/span&gt;&lt;/li&gt;&lt;li&gt;Character Appearance: extra text for appearance.&lt;/li&gt;&lt;li&gt;Allies: add w/form to make ul&lt;/li&gt;&lt;li&gt;Organizations: add w/form to make ul&lt;/li&gt;&lt;li&gt;Backstory: text box&lt;/li&gt;&lt;li&gt;Treasure: add w/form to make ul&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="-1450" y="690" width="730" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="-520" y="-65" width="350" height="890" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="Character Sidebar - shows charName" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=20;" vertex="1" parent="56">
+                    <mxGeometry width="350" height="890" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Main" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="56">
+                    <mxGeometry x="10" y="35" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="Inventory" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="56">
+                    <mxGeometry x="10" y="105" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="Skills" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="56">
+                    <mxGeometry x="10" y="175" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="Spells (strech goal)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="56">
+                    <mxGeometry x="10" y="820" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="Abilities" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="56">
+                    <mxGeometry x="10" y="245" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="Description" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="56">
+                    <mxGeometry x="14" y="315" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="" style="edgeStyle=none;html=1;fontSize=18;entryX=0.998;entryY=0.218;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="46" target="47">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-430" y="170" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" value="" style="edgeStyle=none;html=1;fontSize=18;entryX=1;entryY=0.25;entryDx=0;entryDy=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="36" target="45">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="" style="edgeStyle=none;html=1;fontSize=18;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="13" target="41">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="40" value="" style="edgeStyle=none;html=1;fontSize=18;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="12" target="38">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="12" value="Main" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
-                    <mxGeometry x="-429" y="-80" width="330" height="60" as="geometry"/>
+                <mxCell id="55" value="" style="edgeStyle=none;html=1;fontSize=18;entryX=1.007;entryY=0.124;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="52" target="54">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="13" value="Inventory" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
-                    <mxGeometry x="-429" y="-10" width="330" height="60" as="geometry"/>
+                <mxCell id="59" value="Save List Page&lt;br&gt;Can confirm slots to save/load character (start w/one)" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="315" y="560" width="940" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="36" value="Skills" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
-                    <mxGeometry x="-429" y="60" width="330" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="37" value="Attacks" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
-                    <mxGeometry x="-429" y="130" width="330" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="38" value="Shows:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Inspiration Marker&lt;/li&gt;&lt;li&gt;AC calculated from dex/armor/bonuses&lt;/li&gt;&lt;li&gt;Initiative&lt;/li&gt;&lt;li&gt;Proficiency Bonus&lt;/li&gt;&lt;li&gt;Speed&lt;/li&gt;&lt;li&gt;Ability Scoresd (SDCIWC) and bonuses&lt;/li&gt;&lt;li&gt;HP min/max (functions for temp hit points or negative max HP)&lt;/li&gt;&lt;li&gt;Hit Dice (1d10 + 3 per lvl, etc)&lt;/li&gt;&lt;li&gt;Condition List - Allow player to add and remove&lt;/li&gt;&lt;li&gt;Current Equipped Weapon (name, atk bonus, damage)&lt;/li&gt;&lt;li&gt;Death Saves&lt;/li&gt;&lt;li&gt;Saving Throws&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;align=left;" vertex="1" parent="1">
-                    <mxGeometry x="-1070" y="-410" width="600" height="390" as="geometry"/>
-                </mxCell>
-                <mxCell id="39" value="Character info header (Class &amp;amp; Level, Background, Player Name, Race, Alignment, current XP/Next Level XP" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;verticalAlign=middle;" vertex="1" parent="1">
-                    <mxGeometry x="315" y="-90" width="945" height="60" as="geometry"/>
+                <mxCell id="61" value="Game options: Use Feats, Encumberance,&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="317.5" y="350" width="940" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
