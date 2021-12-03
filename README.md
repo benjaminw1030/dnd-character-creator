@@ -42,14 +42,23 @@ This sounds AMAZING! I love this idea quite a bit.  I used to use character crea
 Here are a few things I want to point out: 
 
 Pre-planning your back-end
-A lot of this part is pretty predicated on the content of the 5e handbook itself. You may have a lot of research to do to make sure that your functionality, options, abilities, skills, etc are correctly attributed depending on the user's selections. 
+
+A lot of this part is pretty predicated on the content of the 5e handbook itself. You may have a lot of research to do to make sure that your functionality, options, abilities, skills, etc are correctly attributed depending on the user's selections.
+
 How exactly do you want users to access this information? Do you want a website with authentication for users to call up their saved characters from the backend? Do you want to be able to save it as a file? An image/character sheet? (stretch goal, as you have here)
+
 Users and authentication
-If you feel like you'll want to host this site somewhere, I'd look into using google or third-party authentication so you don't have to store sensitive user data on a database. 
-I'd also try to make sure that users can't maliciously attack your database with spam, or bloat it and cost you money. 
-Alternatively, you can avoid databases entirely and specifically look at local storage as the only way to keep this information. Or both! 
+
+If you feel like you'll want to host this site somewhere, I'd look into using google or third-party authentication so you don't have to store sensitive user data on a database.
+
+I'd also try to make sure that users can't maliciously attack your database with spam, or bloat it and cost you money.
+
+Alternatively, you can avoid databases entirely and specifically look at local storage as the only way to keep this information. Or both!
+
 React and styling
-I see that you're planning on using react, and I think this is great! Modularity helps with these sorts of projects! 
+
+I see that you're planning on using react, and I think this is great! Modularity helps with these sorts of projects!
+
 Consider using React style libraries, such as Semantic-UI or something similar (there are many!)
 
 All in all, I think you have a great setup here for 40 hours of work. Your MVP is attainable and you have plenty of other research to do for any stretch goals you make it to! Well done! Excited to see what comes of it (and selfishly hope to use it when I join my friend's upcoming campaign...). 
@@ -59,3 +68,5 @@ All in all, I think you have a great setup here for 40 hours of work. Your MVP i
 ### Research & Planning Log
 #### 12/3/2021
 * 11:00 initial commits.
+* 11:17 researching Semantic UI: https://react.semantic-ui.com/
+* 12:09 creating diagram

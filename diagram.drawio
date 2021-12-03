@@ -1,0 +1,112 @@
+<mxfile host="65bd71144e">
+    <diagram id="zaeMc1xhCrONg7oMz10p" name="Page-1">
+        <mxGraphModel dx="3307" dy="2250" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#4D4D4D" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="&lt;h1&gt;&lt;font style=&quot;font-size: 22px&quot;&gt;App&lt;/font&gt;&lt;/h1&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="-80" y="-290" width="1370" height="1080" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Character Control" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=20;" vertex="1" parent="1">
+                    <mxGeometry x="-70" y="-230" width="1350" height="1010" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Header - Text changes dependent on page" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=20;" vertex="1" parent="1">
+                    <mxGeometry x="-60" y="-190" width="1330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Options Sidebar - default, will show if no character is loaded" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=20;" vertex="1" parent="1">
+                    <mxGeometry x="-60" y="-120" width="350" height="890" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Content Area - Changes depending on buttons from sidebar." style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="300" y="-120" width="970" height="890" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="" style="edgeStyle=none;html=1;fontSize=20;" edge="1" parent="1" source="7" target="32">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Back to Character" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="-50" y="700" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="" style="edgeStyle=none;html=1;fontSize=20;" edge="1" parent="1" source="8" target="29">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Load Character" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="-50" y="630" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Save Character" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="-50" y="560" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="" style="edgeStyle=none;html=1;fontSize=20;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="11" target="25">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="340" y="645" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="Delete Character" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="-50" y="490" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="edgeStyle=none;html=1;fontSize=20;" edge="1" parent="1" source="14">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="330" y="-350" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="Black Button" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="-80" y="-380" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="Only shows if character is loaded" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="-360" width="300" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="edgeStyle=none;html=1;fontSize=20;" edge="1" parent="1" source="18">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="330" y="-420" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="18" value="White Button" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+                    <mxGeometry x="-80" y="-450" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="Always shows" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="-430" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="" style="edgeStyle=none;html=1;fontSize=20;" edge="1" parent="1" source="22" target="26">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="New Character" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+                    <mxGeometry x="-50" y="420" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="Confirmation page" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="315" y="490" width="940" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="New Character form, cycle through views with counter." style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="315" y="420" width="940" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="Saved Character List" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="310" y="630" width="940" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="Character Info Pages" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="310" y="700" width="940" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="Character Sidebar - shows charName" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=20;" vertex="1" parent="1">
+                    <mxGeometry x="-439" y="-120" width="350" height="890" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="" style="edgeStyle=none;html=1;fontSize=18;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="12" target="38">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Main" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="-429" y="-80" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="Inventory" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="-429" y="-10" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="Skills" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="-429" y="60" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="Attacks" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="-429" y="130" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="Shows:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Inspiration Marker&lt;/li&gt;&lt;li&gt;AC calculated from dex/armor/bonuses&lt;/li&gt;&lt;li&gt;Initiative&lt;/li&gt;&lt;li&gt;Proficiency Bonus&lt;/li&gt;&lt;li&gt;Speed&lt;/li&gt;&lt;li&gt;Ability Scoresd (SDCIWC) and bonuses&lt;/li&gt;&lt;li&gt;HP min/max (functions for temp hit points or negative max HP)&lt;/li&gt;&lt;li&gt;Hit Dice (1d10 + 3 per lvl, etc)&lt;/li&gt;&lt;li&gt;Condition List - Allow player to add and remove&lt;/li&gt;&lt;li&gt;Current Equipped Weapon (name, atk bonus, damage)&lt;/li&gt;&lt;li&gt;Death Saves&lt;/li&gt;&lt;li&gt;Saving Throws&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;verticalAlign=middle;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="-1070" y="-410" width="600" height="390" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="Character info header (Class &amp;amp; Level, Background, Player Name, Race, Alignment, current XP/Next Level XP" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="315" y="-90" width="945" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
