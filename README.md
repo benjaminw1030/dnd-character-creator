@@ -73,3 +73,4 @@ All in all, I think you have a great setup here for 40 hours of work. Your MVP i
 * 1:31 researching firebase and C#/javascript integration
 * 2:06 diagramming
 * 3:57 more diagramming
+* 4:52 diagramming new character based on API options
