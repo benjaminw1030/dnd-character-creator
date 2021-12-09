@@ -77,3 +77,4 @@ All in all, I think you have a great setup here for 40 hours of work. Your MVP i
 ### 12/8/2021
 * 6:20 PM watched https://www.youtube.com/watch?v=gpfP60KjmZU to integrate C# and React.
 * 7:40 PM decided to switch to firebase/firestore for ease of hosting, will make api calls to DND and pull user characters from database
+* 8:00 PM Refined diagram for planning out API
