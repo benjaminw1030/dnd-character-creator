@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="zaeMc1xhCrONg7oMz10p" name="Page-1">
-        <mxGraphModel dx="4448" dy="3017" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#4D4D4D" math="0" shadow="0">
+        <mxGraphModel dx="4448" dy="2595" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#4D4D4D" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -199,6 +199,9 @@
                 </mxCell>
                 <mxCell id="88" value="http://www.dnd5eapi.co/&lt;br&gt;&lt;ul&gt;&lt;li&gt;Make api calls for details on character traits&lt;/li&gt;&lt;li&gt;Potentially utilize for character creation to set options (stick with basic user-provided data to start)&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#36393d;fontColor=#000000;align=left;verticalAlign=top;fontSize=20;" vertex="1" parent="1">
                     <mxGeometry x="-190" y="-680" width="390" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="91" value="Will use/learn Semantic UI React for styling" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#36393d;fontColor=#000000;align=left;verticalAlign=top;fontSize=20;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="-540" width="390" height="50" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
