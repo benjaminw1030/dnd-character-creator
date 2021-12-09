@@ -67,10 +67,12 @@ All in all, I think you have a great setup here for 40 hours of work. Your MVP i
 ```
 ### Research & Planning Log
 #### 12/3/2021
-* 11:00 initial commits.
-* 11:17 researching Semantic UI: https://react.semantic-ui.com/
-* 12:09 creating diagram
-* 1:31 researching firebase and C#/javascript integration
-* 2:06 diagramming
-* 3:57 more diagramming
-* 4:52 diagramming new character based on API options
+* 11:00 AM initial commits.
+* 11:17 AM researching Semantic UI: https://react.semantic-ui.com/
+* 12:09 PM creating diagram
+* 1:31 PM researching firebase and C#/javascript integration
+* 2:06 PM diagramming
+* 3:57 PM more diagramming
+* 4:52 PM diagramming new character based on API options
+### 12/8/2021
+* 6:20 PM watched https://www.youtube.com/watch?v=gpfP60KjmZU to integrate C# and React.
