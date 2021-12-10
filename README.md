@@ -82,4 +82,6 @@ All in all, I think you have a great setup here for 40 hours of work. Your MVP i
 * 10:27 AM Reviewing lesson on React with APIs to prepare for project
 * 12:37 PM Working on lesson, lunch break
 * 1:44 PM Back from lunch
-* 3:21 finished reviewing lesson
+* 3:21 PM finished reviewing lesson, work on setting up redux
+* 3:39 PM create redux skeleton for states, work on displaying basic slices per diagram
+* 3:53 PM full on code, work on firebase logins
