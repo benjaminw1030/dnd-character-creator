@@ -81,3 +81,4 @@ All in all, I think you have a great setup here for 40 hours of work. Your MVP i
 ### 12/10/2021
 * 10:27 AM Reviewing lesson on React with APIs to prepare for project
 * 12:37 PM Working on lesson, lunch break
+* 1:44 PM Back from lunch
