@@ -1,23 +1,19 @@
 import React from "react";
-import Login from "./Login";
-import CharacterControl from "./CharacterControl"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Account from "./Account";
+import CharacterControl from "./CharacterControl";
+import Header from "./Header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <Router>
-        <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/">
-            <CharacterControl />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/account" element={<Account />} />
+          <Route path="/" element={<CharacterControl />} />
+        </Routes>
+      </BrowserRouter>
   );
 }
 
-export default App;
+// export default App;
