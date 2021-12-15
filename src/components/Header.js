@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const HelpQueueHeader = styled.h1`
+const CharacterCreatorHeader = styled.h1`
   font-size: 24px;
   text-align: center;
   color: white;
@@ -15,7 +15,7 @@ const StyledWrapper = styled.section`
 function Header() {
   return (
     <StyledWrapper>
-      <HelpQueueHeader>Help Queue</HelpQueueHeader>
+      <CharacterCreatorHeader>Character Creator</CharacterCreatorHeader>
       <ul>
         <li>
           <Link to="/">Home</Link>
