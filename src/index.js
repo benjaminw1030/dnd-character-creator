@@ -10,7 +10,6 @@ import firebase from "./firebase";
 import "semantic-ui-css/semantic.min.css";
 import "./index.css";
 import "firebase/auth";
-import Header from "./components/Header"
 
 const store = createStore(rootReducer);
 
