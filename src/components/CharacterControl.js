@@ -13,13 +13,16 @@ import { getAuth } from "firebase/auth";
 function CharacterControl() {
   const firestore = useFirestore();
   const dispatch = useDispatch();
-  const character = null
+  const character = null;
   // const character = useSelector((state) => state.character);
   const [shownComponent, setShownComponent] = useState("none");
   const auth = getAuth();
-  const handleSaveCharacter = () => {
 
-  }
+  const handleNewCharacter = () => {
+
+  };
+
+  const handleSaveCharacter = () => {};
   // console.log(auth.currentUser.uid);
   let mainField;
   if (!isLoaded(auth)) {
@@ -37,7 +40,7 @@ function CharacterControl() {
   } else if (shownComponent === "newchar") {
     mainField = (
       <>
-        <NewChar />
+        <NewChar handleNewCharacter={handleNewCharacter} uid={auth.currentUser.uid} />
       </>
     );
   } else if (shownComponent === "charlist") {
@@ -57,12 +60,16 @@ function CharacterControl() {
       <>
         <p>Load or create a character to see details.</p>
       </>
-    )
+    );
   }
 
   return (
     <>
-      <SidebarMenu character={character} setShownComponent={setShownComponent} handleSaveCharacter={handleSaveCharacter}/>
+      <SidebarMenu
+        character={character}
+        setShownComponent={setShownComponent}
+        handleSaveCharacter={handleSaveCharacter}
+      />
       <div>
         <div>{mainField}</div>
       </div>
