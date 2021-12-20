@@ -13,13 +13,15 @@ import { getAuth } from "firebase/auth";
 function CharacterControl() {
   const firestore = useFirestore();
   const dispatch = useDispatch();
-  const character = useSelector((state) => state.character);
+  const character = null
+  // const character = useSelector((state) => state.character);
   const [shownComponent, setShownComponent] = useState("none");
   const auth = getAuth();
+  const handleSaveCharacter = () => {
 
+  }
   // console.log(auth.currentUser.uid);
   let mainField;
-
   if (!isLoaded(auth)) {
     mainField = (
       <>
@@ -60,7 +62,7 @@ function CharacterControl() {
 
   return (
     <>
-      <SidebarMenu />
+      <SidebarMenu character={character} setShownComponent={setShownComponent} handleSaveCharacter={handleSaveCharacter}/>
       <div>
         <div>{mainField}</div>
       </div>
