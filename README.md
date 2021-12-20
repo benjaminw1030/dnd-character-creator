@@ -87,3 +87,5 @@ All in all, I think you have a great setup here for 40 hours of work. Your MVP i
 * 3:53 PM full on code, work on firebase logins
 ### 12/14/2021
 * 7:02 PM start work on fixing routes
+### 12/19/2021
+* 5:16 PM Start work on building site.
