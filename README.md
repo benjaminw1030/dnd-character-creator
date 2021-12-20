@@ -90,3 +90,5 @@ All in all, I think you have a great setup here for 40 hours of work. Your MVP i
 ### 12/19/2021
 * 5:16 PM Start work on building site.
 * 9:06 PM Finish for the night.
+### 12/20/2021
+* 1:50 PM Continue working.
