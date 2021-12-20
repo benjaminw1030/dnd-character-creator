@@ -133,3 +133,186 @@ export function raceMod(char) {
       return char;
   }
 }
+
+
+export function classMod(char) {
+  function calcStartingHP(hp, con) {
+    return hp + Math.floor((con - 10)/2) 
+  }
+  switch (char.class) {
+    case "Barbarian":
+      return {
+        ...char,
+        currentHP: calcStartingHP(12, char.con),
+        maxHP: calcStartingHP(12, char.con),
+        armorProf: ["light armor", "medium armor", "shields"],
+        weaponProf: ["simple weapons", "martial weapons"],
+        toolProf: [],
+        str: {
+          ...char.str,
+          save: true
+        },
+        con: {
+          ...char.con,
+          save: true
+        },
+        skillChoiceArray: ["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"],
+        skillChoiceCount: 2
+      }; 
+    case "Bard":
+      return {
+        ...char,
+        currentHP: calcStartingHP(8, char.con),
+        maxHP: calcStartingHP(8, char.con),
+        armorProf: ["light armor"],
+        weaponProf: ["simple weapons", "hand crossbows", "longswords", "rapiers", "shortswords"],
+        toolProf: [], //3 musical instruments
+        dex: {
+          ...char.dex,
+          save: true
+        },
+        cha: {
+          ...char.cha,
+          save: true
+        },
+        skillChoiceArray: ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"],
+        skillChoiceCount: 3
+      }; 
+    case "Cleric":
+      return {
+        ...char,
+        currentHP: calcStartingHP(8, char.con),
+        maxHP: calcStartingHP(8, char.con),
+        armorProf: ["light armor", "medium armor", "shields"],
+        weaponProf: ["simple weapons"],
+        toolProf: [],
+        wis: {
+          ...char.wis,
+          save: true
+        },
+        cha: {
+          ...char.cha,
+          save: true
+        },
+        skillChoiceArray: ["History", "Insight", "Medicine", "Persuasion", "Religion"],
+        skillChoiceCount: 2
+      }; 
+    case "Druid":
+      return {
+        ...char,
+        currentHP: calcStartingHP(8, char.con),
+        maxHP: calcStartingHP(8, char.con),
+        armorProf: ["light armor", "medium armor", "shields"],
+        weaponProf: ["clubs", "daggers", "darts", "javelins", "maces", "quarterstaffs", "scimitars", "sickles", "slings", "spears"],
+        toolProf: ["Herbalism kit"],
+        int: {
+          ...char.int,
+          save: true
+        },
+        wis: {
+          ...char.wis,
+          save: true
+        },
+        skillChoiceArray: ["Animal Handling", "Arcana", "Insight", "Medicine", "Nature", "Perception", "Religion", "Survival"],
+        skillChoiceCount: 2
+      }; 
+    case "Fighter":
+      return {
+        ...char,
+        currentHP: calcStartingHP(10, char.con),
+        maxHP: calcStartingHP(10, char.con),
+        armorProf: ["light armor", "medium armor", "heavy armor", "shields"],
+        weaponProf: ["simple weapons", "martial weapons"],
+        toolProf: [],
+        str: {
+          ...char.str,
+          save: true
+        },
+        con: {
+          ...char.con,
+          save: true
+        },
+        skillChoiceArray: ["Acrobatics", "Animal Handling", "Arcana", "Insight", "Medicine", "Nature", "Perception", "Religion", "Survival"],
+        skillChoiceCount: 2
+      }; 
+    case "Monk":
+      return {
+        ...char,
+        currentHP: calcStartingHP(8, char.con),
+        maxHP: calcStartingHP(8, char.con),
+        armorProf: [],
+        weaponProf: ["simple weapons", "shortswords"],
+        toolProf: [], //one artisan tool or musical instrument
+        str: {
+          ...char.str,
+          save: true
+        },
+        dex: {
+          ...char.dex,
+          save: true
+        },
+        skillChoiceArray: ["Acrobatics", "Athletics", "History", "Insight", "Religion", "Stealth"],
+        skillChoiceCount: 2
+      };
+    case "Paladin":
+      return {
+        ...char,
+        currentHP: calcStartingHP(10, char.con),
+        maxHP: calcStartingHP(10, char.con),
+        armorProf: ["light armor", "medium armor", "heavy armor", "shields"],
+        weaponProf: ["simple weapons", "martial weapons"],
+        toolProf: [],
+        wis: {
+          ...char.wis,
+          save: true
+        },
+        cha: {
+          ...char.cha,
+          save: true
+        },
+        skillChoiceArray: ["Athletics", "Insight", "Intimidation", "Medicine", "Persuasion", "Religion"],
+        skillChoiceCount: 2
+      }; 
+    case "Ranger":
+      return {
+        ...char,
+        currentHP: calcStartingHP(10, char.con),
+        maxHP: calcStartingHP(10, char.con),
+        armorProf: ["light armor", "medium armor", "shields"],
+        weaponProf: ["simple weapons", "martial weapons"],
+        toolProf: [],
+        str: {
+          ...char.str,
+          save: true
+        },
+        wis: {
+          ...char.wis,
+          save: true
+        },
+        skillChoiceArray: ["Animal Handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"],
+        skillChoiceCount: 3
+    //   }; 
+    // case "Rogue":
+    //   return {
+    //     ...char,
+    //     currentHP: calcStartingHP(10, char.con),
+    //     maxHP: calcStartingHP(10, char.con),
+    //     armorProf: ["light armor", "medium armor", "shields"],
+    //     weaponProf: ["simple weapons", "martial weapons"],
+    //     toolProf: [],
+    //     str: {
+    //       ...char.str,
+    //       save: true
+    //     },
+    //     wis: {
+    //       ...char.wis,
+    //       save: true
+    //     },
+    //     skillChoiceArray: ["Animal Handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"],
+    //     skillChoiceCount: 3
+    //   }; 
+
+    default:
+      return char;
+  }
+}

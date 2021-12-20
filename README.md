@@ -92,3 +92,4 @@ All in all, I think you have a great setup here for 40 hours of work. Your MVP i
 * 9:06 PM Finish for the night.
 ### 12/20/2021
 * 2:19 PM Continue working.
+* 3:46 PM Break for career services

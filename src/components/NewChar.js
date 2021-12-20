@@ -5,6 +5,7 @@ import { useFirestore } from "react-redux-firebase";
 export default function NewChar({ handleNewCharacter, uid }) {
   const firestore = useFirestore();
   const [tempChar, setTempChar] = useState({});
+  const [step, setStep] = useState(1)
   // function addCharacterToFirestore(event) {
   //   event.preventDefault();
   //   handleNewCharacter();
@@ -20,40 +21,39 @@ export default function NewChar({ handleNewCharacter, uid }) {
     setTempChar({
       uid: uid,
       name: event.target.name.value,
-      level: event.target.level.value,
-      currentHP: event.target.maxHP.value,
-      maxHP: event.target.maxHP.value,
       race: race,
       class: event.target.class.value,
       background: event.target.background.value,
-      str: event.target.str.value,
-      dex: event.target.dex.value,
-      con: event.target.con.value,
-      int: event.target.int.value,
-      wis: event.target.wis.value,
-      cha: event.target.cha.value,
+      str: {
+        score: event.target.str.value,
+        save: false
+      },
+      dex: {
+        score: event.target.dex.value,
+        save: false
+      },
+      con: {
+        score: event.target.con.value,
+        save: false
+      },
+      int: {
+        score: event.target.int.value,
+        save: false
+      },
+      wis: {
+        score: event.target.wis.value,
+        save: false
+      },
+      cha: {
+        score: event.target.cha.value,
+        save: false
+      },
     });
   }
 
   return (
     <form onSubmit={submitFormOne}>
       <input type="text" name="name" placeholder="Character Name" />
-      <input
-        type="number"
-        name="level"
-        placeholder="Starting Level"
-        min="1"
-        max="20"
-        step="1"
-      />
-      <input
-        type="number"
-        name="maxHP"
-        placeholder="Starting Max HP"
-        min="1"
-        max="999"
-        step="1"
-      />
       <label for="race">Select Race</label>
       <select id="race" name="race">
         <option value="Dragonborn">Dragonborn</option>
