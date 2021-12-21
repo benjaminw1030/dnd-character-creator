@@ -1,12 +1,19 @@
 import React from "react";
 import * as mod from "../utilities/Mod";
 import { useFirestore } from "react-redux-firebase";
-import NewCharCleanupForms from "./NewCharCleanupForms"
+import SpecialRaceForms from "./SpecialRaceForm";
+import {
+  increaseAbilityScoreByOne,
+  mergeToolProf,
+  mergeInstrumentProf,
+} from "../utilities/Calc";
+import MainCharForm from "./MainCharForm";
 
 export default function NewChar({ handleNewCharacter, uid }) {
   const firestore = useFirestore();
   const [tempChar, setTempChar] = useState({});
   const [finishForm, setFinishForm] = useState(false);
+  let formDisplay;
   // function addCharacterToFirestore(event) {
   //   event.preventDefault();
   //   handleNewCharacter();
@@ -17,15 +24,17 @@ export default function NewChar({ handleNewCharacter, uid }) {
   //     }
   //   )
   // }
+
   function submitMainForm(event) {
     event.preventDefault();
-    setFinishForm(true);
+    const race = event.target.race.value;
+    const charClass = event.target.class.value;
     setTempChar({
       uid: uid,
       name: event.target.name.value,
       alignment: event.target.alignment.value,
       race: race,
-      class: event.target.class.value,
+      class: charClass,
       background: event.target.background.value,
       instrumentChoiceCount: 0,
       skillChoiceCount: 0,
@@ -65,62 +74,96 @@ export default function NewChar({ handleNewCharacter, uid }) {
         save: false,
       },
     });
+    if (
+      race === "Half-Elf" ||
+      race === "Hill Dwarf" ||
+      race === "Mountain Dwarf" ||
+      race === "Dragonborn"
+    ) {
+      setStep(2);
+    } else if (charClass === "Monk") {
+      setStep(3);
+    }
   }
 
-  function submitDragonbornForm(event) {
+  function submitSpecialRaceForm(event) {
     event.preventDefault();
-    setFinishForm(true);
-    setTempChar({
-      uid: uid,
-      name: event.target.name.value,
-      alignment: event.target.alignment.value,
-      race: race,
-      class: event.target.class.value,
-      background: event.target.background.value,
-      instrumentChoiceCount: 0,
-      skillChoiceCount: 0,
-      toolChoiceCount: 0,
-      languageChoiceCount: 0,
-      artisanToolChoiceCount: 0,
-      dragonType: null,
-      armorProf: [],
-      weaponProf: [],
-      languages: [],
-      skillProf: [],
-      toolProf: [],
-      instrumentProf: [],
-      skillSelection: [],
-      str: {
-        score: event.target.str.value,
-        save: false,
-      },
-      dex: {
-        score: event.target.dex.value,
-        save: false,
-      },
-      con: {
-        score: event.target.con.value,
-        save: false,
-      },
-      int: {
-        score: event.target.int.value,
-        save: false,
-      },
-      wis: {
-        score: event.target.wis.value,
-        save: false,
-      },
-      cha: {
-        score: event.target.cha.value,
-        save: false,
-      },
-    });
+    if (char.race === "Half-Elf") {
+      const abilityScore1 = event.target.halfElfScore1.value;
+      const abilityScore2 = event.target.halfElfScore2.value;
+      if (abilityScore1 === abilityScore2) {
+        alert("Half-Elves cannot increase the same ability score twice!");
+        return;
+      } else {
+        setTempChar(increaseAbilityScoreByOne(abilityScore1));
+        setTempChar(increaseAbilityScoreByOne(abilityScore2));
+      }
+    } else if (char.race === "Dragonborn") {
+      setTempChar({
+        ...char,
+        dragonType: event.target.dragonType.value,
+      });
+    } else if (char.race === "Hill Dwarf" || char.race === "Mountain Dwarf") {
+      setTempChar(mergeToolProf(char, event.target.dwarfTool.value));
+    }
+    char.class === monk ? setStep(3) : setStep(4);
+  }
+
+  function submitSpecialClassForm(event) {
+    event.preventDefault();
+    const tool = event.target.monkProf.value;
+    switch (tool) {
+      case "Bagpipes":
+      case "Drum":
+      case "Dulcimer":
+      case "Flute":
+      case "Horn":
+      case "Lute":
+      case "Lyre":
+      case "Pan Flute":
+      case "Shawm":
+      case "Viol":
+        setTempChar(mergeInstrumentProf(char, tool));
+      default:
+        setTempChar(mergeToolProf(char, tool));
+    }
+    setStep(4);
+  }
+
+  function submitProficienciesForm(event) {
+    event.preventDefault();
+  }
+
+  if (step === 1) {
+    formDisplay = <MainCharForm submitMainForm={submitMainForm} />;
+  } else if (step === 2) {
+    formDisplay = (
+      <SpecialRaceForm
+        submitSpecialRaceForm={submitSpecialRaceForm}
+        tempChar={tempChar}
+      />
+    );
+  } else if (step === 3) {
+    formDisplay = (
+      <SpecialClassForm
+        submitSpecialClassForm={submitSpecialClassForm}
+        tempChar={tempChar}
+      />
+    );
+  } else if (step === 4) {
+    formDisplay = (
+      <ProficienciesForm
+        submitProficienciesForm={submitProficienciesForm}
+        tempChar={tempChar}
+      />
+    );
   }
 
   return (
     <>
-      {!finishForm ? (
-        <form onSubmit={submitFormOne}>
+      {formDisplay}
+      {/* {step === 1 ? (
+        <form onSubmit={submitMainForm}>
           <input type="text" name="name" placeholder="Character Name" />
           <label for="alignment">Select Alignment</label>
           <select id="alignment" name="alignment">
@@ -234,9 +277,9 @@ export default function NewChar({ handleNewCharacter, uid }) {
           />
           <button type="submit">Go to the next step!</button>
         </form>
-      ) : (
-        <NewCharCleanupForms char={tempChar} submitDragonbornForm={submitDragonbornForm} />
-      )}
+      ) : step === 2 (
+        <SpecialRaceForm char={tempChar} submitSpecialRaceForm={submitSpecialRaceForm} />
+      )} */}
     </>
   );
 }

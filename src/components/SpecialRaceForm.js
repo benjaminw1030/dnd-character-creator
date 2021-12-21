@@ -1,8 +1,7 @@
 import React from "react";
 
-function NewCharCleanupForms({ char, submitDragonbornForm }) {
+function SpecialRaceForm({ tempChar, submitSpecialRaceForm }) {
   let raceSelect = null;
-  let monkSelect = null;
   if (char.race === "Dragonborn") {
     raceSelect = (
       <div>
@@ -21,7 +20,7 @@ function NewCharCleanupForms({ char, submitDragonbornForm }) {
         </select>
       </div>
     );
-  } else if (char.race === "Hill Dwarf" || char.race === "Mountain Dwarf") {
+  } else if (tempChar.race === "Hill Dwarf" || tempChar.race === "Mountain Dwarf") {
     raceSelect = (
       <div>
         <label for="dwarfTool">Select extra dwarf tool proficiency</label>
@@ -32,7 +31,7 @@ function NewCharCleanupForms({ char, submitDragonbornForm }) {
         </select>
       </div>
     );
-  } else if (char.race === "Half-Elf") {
+  } else if (tempChar.race === "Half-Elf") {
     <div>
       <p>
         Half Elves may increase two extra abilty scores other than charisma.
@@ -55,22 +54,15 @@ function NewCharCleanupForms({ char, submitDragonbornForm }) {
       </select>
     </div>;
   }
-  if (char.class === "Monk") {
-    monkSelect = <div></div>;
-  } else {
-    monkSelect = null;
-  }
-  //add event listener on submit to check if scores are different
-
+ 
   return (
     <>
-      <form>
+      <form onsubmit={submitSpecialRaceForm}>
         {raceSelect}
-        {monkSelect}
         <button type="submit">Go to the next step!</button>
       </form>
     </>
   );
 }
 
-export default NewCharCleanupForms;
+export default SpecialRaceForm;
