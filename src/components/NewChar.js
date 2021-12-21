@@ -24,6 +24,18 @@ export default function NewChar({ handleNewCharacter, uid }) {
       race: race,
       class: event.target.class.value,
       background: event.target.background.value,
+      instrumentChoiceCount: 0,
+      skillChoiceCount: 0,
+      toolChoiceCount: 0,
+      languageChoiceCount: 0,
+      artisanToolChoiceCount: 0,
+      armorProf: [],
+      weaponProf: [],
+      languages: [],
+      skillProf: [],
+      toolProf: [],
+      instrumentProf: [],
+      skillSelection: [],
       str: {
         score: event.target.str.value,
         save: false
