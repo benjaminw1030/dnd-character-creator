@@ -97,3 +97,4 @@ All in all, I think you have a great setup here for 40 hours of work. Your MVP i
 * 5:31 PM Done for the night.
 ### 12/21/2021
 * 9:39 AM Start coding
+* 12:09 PM Lunch Break
