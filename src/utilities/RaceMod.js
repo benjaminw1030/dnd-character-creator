@@ -291,26 +291,26 @@ export function classMod(char) {
         },
         skillChoiceArray: ["Animal Handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"],
         skillChoiceCount: 3
-    //   }; 
-    // case "Rogue":
-    //   return {
-    //     ...char,
-    //     currentHP: calcStartingHP(10, char.con),
-    //     maxHP: calcStartingHP(10, char.con),
-    //     armorProf: ["light armor", "medium armor", "shields"],
-    //     weaponProf: ["simple weapons", "martial weapons"],
-    //     toolProf: [],
-    //     str: {
-    //       ...char.str,
-    //       save: true
-    //     },
-    //     wis: {
-    //       ...char.wis,
-    //       save: true
-    //     },
-    //     skillChoiceArray: ["Animal Handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"],
-    //     skillChoiceCount: 3
-    //   }; 
+      }; 
+    case "Rogue":
+      return {
+        ...char,
+        currentHP: calcStartingHP(10, char.con),
+        maxHP: calcStartingHP(10, char.con),
+        armorProf: ["light armor", "medium armor", "shields"],
+        weaponProf: ["simple weapons", "martial weapons"],
+        toolProf: [],
+        str: {
+          ...char.str,
+          save: true
+        },
+        wis: {
+          ...char.wis,
+          save: true
+        },
+        skillChoiceArray: ["Animal Handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"],
+        skillChoiceCount: 3
+      }; 
 
     default:
       return char;
