@@ -29,6 +29,7 @@ export default function NewChar({ handleNewCharacter, uid }) {
       toolChoiceCount: 0,
       languageChoiceCount: 0,
       artisanToolChoiceCount: 0,
+      dragonType: null,
       armorProf: [],
       weaponProf: [],
       languages: [],

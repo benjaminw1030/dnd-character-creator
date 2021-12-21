@@ -1,3 +1,11 @@
+import * as calc from "./Calc";
+
+// later menus:
+//dragonborn specifies dragonType
+//dwarf adds one ["Smith's tools", "Brewer supplies", "Mason's Tools"]
+//half-elf add two ability scores (except charisma)
+//monk add one artisan's tool or musical instrument
+
 //function 1:
 export function raceMod(char) {
   switch (char.race) {
@@ -9,7 +17,8 @@ export function raceMod(char) {
         speed: 30,
         size: "medium",
         languages: ["Common", "Draconic"],
-      }; //look into adding resistances and dragon type
+        dragonborn: true,
+      };
     case "Hill Dwarf":
       return {
         ...char,
@@ -18,8 +27,8 @@ export function raceMod(char) {
         speed: 25,
         size: "medium",
         languages: ["Common", "Dwarvish"],
-      }; //look into adding tool proficiency choices
-    case "Hill Dwarf":
+      };
+    case "Mountain Dwarf":
       return {
         ...char,
         con: char.con + 2,
@@ -27,7 +36,7 @@ export function raceMod(char) {
         speed: 25,
         size: "medium",
         languages: ["Common", "Dwarvish"],
-      }; //look into adding tool proficiency choices
+      };
     case "Drow":
       return {
         ...char,
@@ -36,7 +45,9 @@ export function raceMod(char) {
         speed: 30,
         size: "medium",
         languages: ["Common", "Elvish"],
-      }; //look into adding perception proficiency
+        skillProf: ["Perception"],
+        weaponProf: ["longsword", "shortsword", "shortbow", "longbow"],
+      };
     case "High Elf":
       return {
         ...char,
@@ -45,7 +56,10 @@ export function raceMod(char) {
         speed: 30,
         size: "medium",
         languages: ["Common", "Elvish"],
-      }; //look into adding perception proficiency, extra language choice
+        skillProf: ["Perception"],
+        weaponProf: ["longsword", "shortsword", "shortbow", "longbow"],
+        languageChoiceCount: 1,
+      };
     case "Wood Elf":
       return {
         ...char,
@@ -54,7 +68,9 @@ export function raceMod(char) {
         speed: 35,
         size: "medium",
         languages: ["Common", "Elvish"],
-      }; //look into adding perception proficiency, extra language choice
+        skillProf: ["Perception"],
+        weaponProf: ["longsword", "shortsword", "shortbow", "longbow"],
+      };
     case "Forest Gnome":
       return {
         ...char,
@@ -72,7 +88,8 @@ export function raceMod(char) {
         speed: 25,
         size: "small",
         languages: ["Common", "Gnomish"],
-      }; //tinker tool proficiency
+        toolProf: ["Tinker's tools"],
+      };
     case "Half-Elf":
       return {
         ...char,
@@ -80,7 +97,9 @@ export function raceMod(char) {
         speed: 30,
         size: "medium",
         languages: ["Common", "Gnomish"],
-      }; //add proficiency in two skills, extra ability score (except charisma), extra language
+        skillChoiceCount: 2,
+        languageChoiceCount: 1,
+      };
     case "Half-Orc":
       return {
         ...char,
@@ -89,7 +108,8 @@ export function raceMod(char) {
         speed: 30,
         size: "medium",
         languages: ["Common", "Orc"],
-      }; //add proficiency in intimidation
+        skillProf: ["Intimidation"],
+      };
     case "Lightfoot Halfling":
       return {
         ...char,
@@ -120,7 +140,8 @@ export function raceMod(char) {
         speed: 30,
         size: "medium",
         languages: ["Common"],
-      }; //add extra language
+        languageChoiceCount: 1,
+      };
     case "Tiefling":
       return {
         ...char,
@@ -137,17 +158,14 @@ export function raceMod(char) {
 
 //function 2:
 export function classMod(char) {
-  function calcStartingHP(hp, con) {
-    return hp + Math.floor((con - 10) / 2);
-  }
   switch (char.class) {
     case "Barbarian":
+      char = calc.mergeWeaponProf(char, ["simple weapons", "martial weapons"]);
       return {
         ...char,
-        currentHP: calcStartingHP(12, char.con),
-        maxHP: calcStartingHP(12, char.con),
+        currentHP: calc.calcStartingHP(12, char.con),
+        maxHP: calc.calcStartingHP(12, char.con),
         armorProf: ["light armor", "medium armor", "shields"],
-        weaponProf: ["simple weapons", "martial weapons"],
         str: {
           ...char.str,
           save: true,
@@ -167,18 +185,18 @@ export function classMod(char) {
         skillChoiceCount: 2,
       };
     case "Bard":
+      char = calc.mergeWeaponProf(char, [
+        "simple weapons",
+        "hand crossbows",
+        "longswords",
+        "rapiers",
+        "shortswords",
+      ]);
       return {
         ...char,
-        currentHP: calcStartingHP(8, char.con),
-        maxHP: calcStartingHP(8, char.con),
+        currentHP: calc.calcStartingHP(8, char.con),
+        maxHP: calc.calcStartingHP(8, char.con),
         armorProf: ["light armor"],
-        weaponProf: [
-          "simple weapons",
-          "hand crossbows",
-          "longswords",
-          "rapiers",
-          "shortswords",
-        ],
         instrumentChoiceCount: char.instrumentChoiceCount + 3,
         dex: {
           ...char.dex,
@@ -211,12 +229,12 @@ export function classMod(char) {
         skillChoiceCount: 3,
       };
     case "Cleric":
+      char = calc.mergeWeaponProf(char, ["simple weapons"]);
       return {
         ...char,
-        currentHP: calcStartingHP(8, char.con),
-        maxHP: calcStartingHP(8, char.con),
+        currentHP: calc.calcStartingHP(8, char.con),
+        maxHP: calc.calcStartingHP(8, char.con),
         armorProf: ["light armor", "medium armor", "shields"],
-        weaponProf: ["simple weapons"],
         wis: {
           ...char.wis,
           save: true,
@@ -235,10 +253,22 @@ export function classMod(char) {
         skillChoiceCount: 2,
       };
     case "Druid":
+      char = calc.mergeWeaponProf(char, [
+        "clubs",
+        "daggers",
+        "darts",
+        "javelins",
+        "maces",
+        "quarterstaffs",
+        "scimitars",
+        "sickles",
+        "slings",
+        "spears",
+      ]);
       return {
         ...char,
-        currentHP: calcStartingHP(8, char.con),
-        maxHP: calcStartingHP(8, char.con),
+        currentHP: calc.calcStartingHP(8, char.con),
+        maxHP: calc.calcStartingHP(8, char.con),
         armorProf: ["light armor", "medium armor", "shields"],
         weaponProf: [
           "clubs",
@@ -274,12 +304,12 @@ export function classMod(char) {
         skillChoiceCount: 2,
       };
     case "Fighter":
+      char = calc.mergeWeaponProf(char, ["simple weapons", "martial weapons"]);
       return {
         ...char,
-        currentHP: calcStartingHP(10, char.con),
-        maxHP: calcStartingHP(10, char.con),
+        currentHP: calc.calcStartingHP(10, char.con),
+        maxHP: calc.calcStartingHP(10, char.con),
         armorProf: ["light armor", "medium armor", "heavy armor", "shields"],
-        weaponProf: ["simple weapons", "martial weapons"],
         str: {
           ...char.str,
           save: true,
@@ -302,14 +332,11 @@ export function classMod(char) {
         skillChoiceCount: 2,
       };
     case "Monk":
+      char = calc.mergeWeaponProf(char, ["simple weapons", "shortswords"]);
       return {
         ...char,
-        currentHP: calcStartingHP(8, char.con),
-        maxHP: calcStartingHP(8, char.con),
-        weaponProf: ["simple weapons", "shortswords"],
-        artisanToolChoiceCount: char.artisanToolChoiceCount + 1,
-        instrumentChoiceCount: char.instrumentChoiceCount + 1,
-        //one artisan tool or musical instrument, add code later to allow user to choose
+        currentHP: calc.calcStartingHP(8, char.con),
+        maxHP: calc.calcStartingHP(8, char.con),
         str: {
           ...char.str,
           save: true,
@@ -329,12 +356,12 @@ export function classMod(char) {
         skillChoiceCount: 2,
       };
     case "Paladin":
+      char = calc.mergeWeaponProf(char, ["simple weapons", "martial weapons"]);
       return {
         ...char,
-        currentHP: calcStartingHP(10, char.con),
-        maxHP: calcStartingHP(10, char.con),
+        currentHP: calc.calcStartingHP(10, char.con),
+        maxHP: calc.calcStartingHP(10, char.con),
         armorProf: ["light armor", "medium armor", "heavy armor", "shields"],
-        weaponProf: ["simple weapons", "martial weapons"],
         wis: {
           ...char.wis,
           save: true,
@@ -354,12 +381,12 @@ export function classMod(char) {
         skillChoiceCount: 2,
       };
     case "Ranger":
+      char = calc.mergeWeaponProf(char, ["simple weapons", "martial weapons"]);
       return {
         ...char,
-        currentHP: calcStartingHP(10, char.con),
-        maxHP: calcStartingHP(10, char.con),
+        currentHP: calc.calcStartingHP(10, char.con),
+        maxHP: calc.calcStartingHP(10, char.con),
         armorProf: ["light armor", "medium armor", "shields"],
-        weaponProf: ["simple weapons", "martial weapons"],
         str: {
           ...char.str,
           save: true,
@@ -381,19 +408,19 @@ export function classMod(char) {
         skillChoiceCount: 3,
       };
     case "Rogue":
+      char = calc.mergeWeaponProf(char, [
+        "simple weapons",
+        "hand crossbows",
+        "longswords",
+        "rapiers",
+        "shortswords",
+      ]);
+      char = calc.mergeToolProf(char, ["Thieves' tools"]);
       return {
         ...char,
-        currentHP: calcStartingHP(8, char.con),
-        maxHP: calcStartingHP(8, char.con),
+        currentHP: calc.calcStartingHP(8, char.con),
+        maxHP: calc.calcStartingHP(8, char.con),
         armorProf: ["light armor"],
-        weaponProf: [
-          "simple weapons",
-          "hand crossbows",
-          "longswords",
-          "rapiers",
-          "shortswords",
-        ],
-        toolProf: ["Thieves' tools"],
         dex: {
           ...char.dex,
           save: true,
@@ -418,17 +445,17 @@ export function classMod(char) {
         skillChoiceCount: 4,
       };
     case "Sorcerer":
+      char = calc.mergeWeaponProf(char, [
+        "daggers",
+        "darts",
+        "slings",
+        "quarterstaffs",
+        "light crossbows",
+      ]);
       return {
         ...char,
-        currentHP: calcStartingHP(6, char.con),
-        maxHP: calcStartingHP(6, char.con),
-        weaponProf: [
-          "daggers",
-          "darts",
-          "slings",
-          "quarterstaffs",
-          "light crossbows",
-        ],
+        currentHP: calc.calcStartingHP(6, char.con),
+        maxHP: calc.calcStartingHP(6, char.con),
         con: {
           ...char.con,
           save: true,
@@ -448,12 +475,12 @@ export function classMod(char) {
         skillChoiceCount: 2,
       };
     case "Warlock":
+      char = calc.mergeWeaponProf(char, ["simple weapons"]);
       return {
         ...char,
-        currentHP: calcStartingHP(8, char.con),
-        maxHP: calcStartingHP(8, char.con),
+        currentHP: calc.calcStartingHP(8, char.con),
+        maxHP: calc.calcStartingHP(8, char.con),
         armorProf: ["light armor"],
-        weaponProf: ["simple weapons"],
         wis: {
           ...char.wis,
           save: true,
@@ -474,17 +501,17 @@ export function classMod(char) {
         skillChoiceCount: 2,
       };
     case "Wizard":
+      char = calc.mergeWeaponProf(char, [
+        "daggers",
+        "darts",
+        "slings",
+        "quarterstaffs",
+        "light crossbows",
+      ]);
       return {
         ...char,
-        currentHP: calcStartingHP(6, char.con),
-        maxHP: calcStartingHP(6, char.con),
-        weaponProf: [
-          "daggers",
-          "darts",
-          "slings",
-          "quarterstaffs",
-          "light crossbows",
-        ],
+        currentHP: calc.calcStartingHP(6, char.con),
+        maxHP: calc.calcStartingHP(6, char.con),
         int: {
           ...char.int,
           save: true,
@@ -512,92 +539,83 @@ export function classMod(char) {
 export function backgroundMod(char) {
   switch (char.background) {
     case "Acolyte":
+      char = calc.mergeSkillProf(char, ["Insight", "Religion"]);
       return {
         ...char,
-        skills: ["Insight", "Religion"],
         languageChoiceCount: char.languageChoiceCount + 2,
       };
     case "Charlatan":
-      return {
-        ...char,
-        skillProf: ["Insight", "Religion"],
-        toolProf: ["Disguise kit", "Forgery kit"], //will need code to merge proficiencies
-      };
+      char = calc.mergeSkillProf(char, ["Deception", "Sleight of Hand"]);
+      char = calc.mergeToolProf(char, ["Disguise kit", "Forgery kit"]);
+      return char;
     case "Criminal":
-      return {
-        ...char,
-        skillProf: ["Deception", "Stealth"],
-        toolProf: ["gaming set", "Thieves' tools"],
-      };
+      char = calc.mergeSkillProf(char, ["Deception", "Stealth"]);
+      char = calc.mergeToolProf(char, ["Gaming set", "Thieves' tools"]);
+      return char;
     case "Entertainer":
+      char = calc.mergeSkillProf(char, ["Acrobatics", "Performance"]);
+      char = calc.mergeToolProf(char, ["Disguise kit"]);
       return {
         ...char,
-        skillProf: ["Acrobatics", "Performance"],
-        toolProf: ["Disguise kit"],
         instrumentChoiceCount: char.instrumentChoiceCount + 1,
       };
     case "Folk Hero":
+      char = calc.mergeSkillProf(char, ["Animal Handling", "Survival"]);
+      char = calc.mergeToolProf(char, ["Vehicles (land)"]);
       return {
         ...char,
-        skillProf: ["Animal Handling", "Survival"],
-        toolProf: ["vehicles (land)"],
         artisanToolChoiceCount: char.artisanToolChoiceCount + 1,
       };
     case "Guild Artisan":
+      char = calc.mergeSkillProf(char, ["Insight", "Persuasion"]);
       return {
         ...char,
-        skillProf: ["Insight", "Persuasion"],
         artisanToolChoiceCount: char.artisanToolChoiceCount + 1,
         languageChoiceCount: char.languageChoiceCount + 1,
       };
     case "Hermit":
+      char = calc.mergeSkillProf(char, ["Medicine", "Religion"]);
+      char = calc.mergeToolProf(char, ["Herbalism kit"]);
       return {
         ...char,
-        skillProf: ["Medicine", "Religion"],
-        toolProf: ["Herbalism kit"],
         languageChoiceCount: char.languageChoiceCount + 1,
       };
     case "Noble":
+      char = calc.mergeSkillProf(char, ["History", "Persuasion"]);
+      char = calc.mergeToolProf(char, ["Gaming set"]);
       return {
         ...char,
-        skillProf: ["History", "Persuasion"],
-        toolProf: ["gaming set"],
         languageChoiceCount: char.languageChoiceCount + 1,
       };
     case "Outlander":
+      char = calc.mergeSkillProf(char, ["Athletics", "Survival"]);
       return {
         ...char,
-        skillProf: ["Athletics", "Survival"],
         instrumentChoiceCount: char.instrumentChoiceCount + 1,
         languageChoiceCount: char.languageChoiceCount + 1,
       };
     case "Sage":
+      char = calc.mergeSkillProf(char, ["Arcana", "History"]);
       return {
         ...char,
-        skillProf: ["Arcana", "History"],
         languageChoiceCount: char.languageChoiceCount + 2,
       };
     case "Sailor":
-      return {
-        ...char,
-        skillProf: ["Athletics", "Perception"],
-        toolProf: ["Navigator's tools", "vehicles (water)"],
-      };
+      char = calc.mergeSkillProf(char, ["Athletics", "Perception"]);
+      char = calc.mergeToolProf(char, [
+        "Navigator's tools",
+        "Vehicles (water)",
+      ]);
+      return char;
     case "Soldier":
-      return {
-        ...char,
-        skillProf: ["Athletics", "Intimidation"],
-        toolProf: ["gaming set", "vehicles (land)"],
-      };
+      char = calc.mergeSkillProf(char, ["Athletics", "Intimidation"]);
+      char = calc.mergeToolProf(char, ["Gaming set", "Vehicles (land)"]);
+      return char;
     case "Urchin":
-      return {
-        ...char,
-        skillProf: ["Sleight of Hand", "Stealth"],
-        toolProf: ["Disguise kit", "Thieves' tools"],
-      };
+      char = calc.mergeSkillProf(char, ["Sleight of Hand", "Stealth"]);
+      char = calc.mergeToolProf(char, ["Disguise kit", "Thieves' tools"]);
+      return char;
     default:
       return char;
   }
 }
-
-//need to implement code to add from two different skill/tool sources, if same increase proficiencycount for final screen.
