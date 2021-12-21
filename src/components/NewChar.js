@@ -1,5 +1,5 @@
 import React from "react";
-import * as mod from "../utilities/RaceMod";
+import * as mod from "../utilities/Mod";
 import { useFirestore } from "react-redux-firebase";
 
 export default function NewChar({ handleNewCharacter, uid }) {
