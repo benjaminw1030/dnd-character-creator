@@ -35,17 +35,17 @@ export default function NewChar({
     const race = event.target.race.value;
     const charClass = event.target.class.value;
     const baseChar = {
-      uid: uid,
-      name: event.target.name.value,
       alignment: event.target.alignment.value,
-      race: race,
-      class: charClass,
       background: event.target.background.value,
+      class: charClass,
+      dragonType: null,
+      name: event.target.name.value,
+      race: race,
+      uid: uid,
       instrumentChoiceCount: 0,
       skillChoiceCount: 0,
       languageChoiceCount: 0,
       artisanToolChoiceCount: 0,
-      dragonType: null,
       armorProf: [],
       weaponProf: [],
       languages: [],
@@ -79,6 +79,7 @@ export default function NewChar({
       },
     };
     const classRaceBackgroundChar = backgroundMod(classMod(raceMod(baseChar)));
+    console.log(classRaceBackgroundChar);
     setTempChar(classRaceBackgroundChar);
     if (
       race === "Half-Elf" ||
@@ -90,6 +91,7 @@ export default function NewChar({
     } else if (charClass === "Monk") {
       setStep(3);
     }
+    setStep(4);
   }
 
   function submitSpecialRaceForm(event) {
@@ -194,28 +196,38 @@ export default function NewChar({
       ),
       skills
     );
+    console.log(finalChar);
     const charToSave = {
-      uid: finalChar.uid,
-      name: finalChar.name,
-      alignment: finalChar.alignment,
-      race: finalChar.race,
-      class: finalChar.class,
-      background: finalChar.background,
-      dragonType: finalChar.dragonType,
-      armorProf: finalChar.armorProf,
-      weaponProf: finalChar.weaponProf,
-      languages: finalChar.languages,
-      skillProf: finalChar.skillProf,
-      toolProf: finalChar.toolProf,
-      instrumentProf: finalChar.instrumentProf,
       ability: {
-        str: finalChar.str,
-        dex: finalChar.dex,
-        con: finalChar.con,
-        int: finalChar.int,
-        wis: finalChar.wis,
         cha: finalChar.cha,
+        con: finalChar.con,
+        dex: finalChar.dex,
+        int: finalChar.int,
+        str: finalChar.str,
+        wis: finalChar.wis,
       },
+      alignment: finalChar.alignment,
+      background: finalChar.background,
+      class: finalChar.class,
+      dragonType: finalChar.dragonType,
+      hp: {
+        current: finalChar.currentHP,
+        max: finalChar.maxHP,
+      },
+      level: 1,
+      name: finalChar.name,
+      proficiency: {
+        armor: finalChar.armorProf,
+        instruments: finalChar.instrumentProf,
+        languages: finalChar.languages,
+        skills: finalChar.skillProf,
+        tools: finalChar.toolProf,
+        weapons: finalChar.weaponProf,
+      },
+      race: finalChar.race,
+      size: finalChar.size,
+      speed: finalChar.speed,
+      uid: finalChar.uid,
     };
     addCharacterToFirestore(charToSave);
     console.log(charToSave);
@@ -246,7 +258,6 @@ export default function NewChar({
       />
     );
   }
-
   return <>{formDisplay}</>;
 }
 

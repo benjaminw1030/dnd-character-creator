@@ -1,8 +1,6 @@
 import React from "react";
-import firebase from "firebase/compat/app";
 import { connect } from "react-redux";
 import { withFirestore, isLoaded } from "react-redux-firebase";
-import { render } from "@testing-library/react";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -23,7 +21,6 @@ class Account extends React.Component {
   doSignUp = (event) => {
     event.preventDefault();
     const auth = getAuth();
-    const userName = event.target.userName.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
     const passwordConfirmation = event.target.confirmPassword.value;
@@ -37,6 +34,7 @@ class Account extends React.Component {
         });
     }
   };
+  //potentially refactor to add User collection, then add Character collection to user docs
 
   doLogin = (event) => {
     event.preventDefault();

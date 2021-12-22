@@ -6,8 +6,8 @@ export default function SidebarMenu({ setShownComponent, character, handleSaveCh
   if (character === null) {
     sideButtons = (
       <>
-        <button onClick={() => setShownComponent("newchar")}>New Character</button>
-        <button onClick={() => setShownComponent("charlist")}>Load Character</button>
+        <button onClick={() => setShownComponent("newChar")}>New Character</button>
+        <button onClick={() => setShownComponent("charList")}>Load Character</button>
       </>
     )
     } else if (!showMainMenu) {
@@ -25,8 +25,8 @@ export default function SidebarMenu({ setShownComponent, character, handleSaveCh
     } else {
     sideButtons = (
     <>
-      <button onClick={() => setShownComponent("newchar")}>New Character</button>
-      <button onClick={() => setShownComponent("charlist")}>Load Character</button>
+      <button onClick={() => setShownComponent("newChar")}>New Character</button>
+      <button onClick={() => setShownComponent("charList")}>Load Character</button>
       <button onClick={() => handleSaveCharacter(character)}>Save Character</button>
       <button onClick={() => setShowMainMenu(false)}>Back to Character</button>
     </>

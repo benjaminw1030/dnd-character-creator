@@ -1,36 +1,41 @@
 import React, { useState, useEffect } from "react";
 import { useFirestore } from "react-redux-firebase";
-import { useSelector, useDispatch } from "react-redux";
+// import { useSelector, useDispatch } from "react-redux";
 import { withFirestore, isLoaded } from "react-redux-firebase";
 import * as a from "../actions";
 import SidebarMenu from "./SidebarMenu";
 import NewChar from "./NewChar";
 import CharList from "./CharList";
-import Options from "./Options";
+// import Options from "./Options";
 import CharInfo from "./CharInfo";
 import { getAuth } from "firebase/auth";
 
 function CharacterControl() {
   const firestore = useFirestore();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const character = null;
-  // const character = useSelector((state) => state.character);
   const [shownComponent, setShownComponent] = useState("none");
   const auth = getAuth();
   const [tempChar, setTempChar] = useState({});
   const [step, setStep] = useState(1);
+  let mainField;
 
   const handleNewCharacter = () => {
-
+    setStep(1);
+    setTempChar({});
+    setShownComponent("charList")
   };
 
+  const handleSelectCharacter = () => {
+
+  }
+
   const handleSaveCharacter = () => {};
-  // console.log(auth.currentUser.uid);
-  let mainField;
+
   if (!isLoaded(auth)) {
     mainField = (
       <>
-        <p>Loading</p>
+        <p>Loading...</p>
       </>
     );
   } else if (isLoaded(auth) && auth.currentUser === null) {
@@ -39,19 +44,19 @@ function CharacterControl() {
         <p>Log in to add and view characters.</p>
       </>
     );
-  } else if (shownComponent === "newchar") {
+  } else if (shownComponent === "newChar") {
     mainField = (
       <>
         <NewChar handleNewCharacter={handleNewCharacter} uid={auth.currentUser.uid} step={step} setStep={setStep} tempChar={tempChar} setTempChar={setTempChar}/>
       </>
     );
-  } else if (shownComponent === "charlist") {
+  } else if (shownComponent === "charList") {
     mainField = (
       <>
-        <CharList />
+        <CharList currentUserId={auth.currentUser.uid}/>
       </>
     );
-  } else if (character != null && shownComponent === "charinfo") {
+  } else if (character != null && shownComponent === "charInfo") {
     mainField = (
       <>
         <CharInfo />
