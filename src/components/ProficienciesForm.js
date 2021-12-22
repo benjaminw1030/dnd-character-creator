@@ -9,6 +9,7 @@ function ProficienciesForm({ submitProficienciesForm, tempChar }) {
   let instrumentSelect = null;
   let artisanToolSelect = null;
   let languageSelect = null;
+  let skillSelect = null;
   const instrumentList = [
     "Bagpipes",
     "Drum",
@@ -67,7 +68,7 @@ function ProficienciesForm({ submitProficienciesForm, tempChar }) {
     "Sleight of Hand",
     "Stealth",
     "Survival",
-  ]
+  ];
   const languageList = [
     "Abyssal",
     "Celestial",
@@ -87,119 +88,152 @@ function ProficienciesForm({ submitProficienciesForm, tempChar }) {
     "Sylvan",
     "Thieves' Cant",
     "Undercommon",
-  ]
-  instrumentList.forEach(instrument => {
-    if (tempChar.instrumentProf.includes(instrument)) {
-      continue;
-    } else {
+  ];
+  instrumentList.forEach((instrument) => {
+    if (!tempChar.instrumentProf.includes(instrument)) {
       availableInstruments.push(instrument);
     }
-  })
-  // toolList.forEach(tool => {
-  //   if (tempChar.toolProf.includes(tool)) {
-  //     continue;
-  //   } else {
-  //     availableTools.push(tool);
-  //   }
-  // })
-  artisanToolList.forEach(artisanTool => {
-    if (tempChar.artisanToolProf.includes(artisanTool)) {
-      continue;
-    } else {
+  });
+
+  artisanToolList.forEach((artisanTool) => {
+    if (!tempChar.toolProf.includes(artisanTool)) {
       availableArtisanTools.push(artisanTool);
     }
-  })
-  skillList.forEach(skill => {
-    if (tempChar.skillProf.includes(skill) || !tempChar.skillSelection.includes(skill)) {
-      continue;
-    } else {
+  });
+
+  skillList.forEach((skill) => {
+    if (
+      !tempChar.skillProf.includes(skill) &&
+      tempChar.skillSelection.includes(skill)
+    ) {
       availableSkills.push(skill);
     }
-  })
-  languageList.forEach(language => {
-    if (tempChar.languages.includes(language)) {
-      continue;
-    } else {
+  });
+
+  languageList.forEach((language) => {
+    if (!tempChar.languages.includes(language)) {
       availableLanguages.push(language);
     }
-  })
+  });
 
-  let skillCountingArray = []
-  for (i = 1; i <= tempChar.skillChoiceCount; i++) {
+  let skillCountingArray = [];
+  for (let i = 1; i <= tempChar.skillChoiceCount; i++) {
     skillCountingArray.push("skill" + i);
   }
 
-  let languageCountingArray = []
-  for (i = 1; i <= tempChar.languageChoiceCount; i++) {
+  let languageCountingArray = [];
+  for (let i = 1; i <= tempChar.languageChoiceCount; i++) {
     languageCountingArray.push("language" + i);
   }
 
-  let artisanToolsCountingArray = []
-  for (i = 1; i <= tempChar.artisanToolsChoiceCount; i++) {
+  let artisanToolsCountingArray = [];
+  for (let i = 1; i <= tempChar.artisanToolChoiceCount; i++) {
     artisanToolsCountingArray.push("artisanTools" + i);
   }
 
-  let instrumentCountingArray = []
-  for (i = 1; i <= tempChar.instrumentChoiceCount; i++) {
+  let instrumentCountingArray = [];
+  for (let i = 1; i <= tempChar.instrumentChoiceCount; i++) {
     instrumentCountingArray.push("instrument" + i);
   }
 
-  const skillSelect = (
+  if (tempChar.skillChoiceCount) {
+  let text = "Select a skill.";
+  if (tempChar.skillChoiceCount > 1) {
+    text = `Select ${tempChar.skillChoiceCount} different skills.`;
+  }
+  skillSelect = (
     <div>
-      <p>Select {tempChar.skillChoiceCount} different skills.</p>
-      {skillCountingArray.map(count => {
-        <select id={count} name={count}>
-        {availableSkills.map((skill) => {
-          <option value={skill}>{skill}</option>
-        })}
-        </select>
+      <p>{text}</p>
+      {skillCountingArray.map((count) => {
+        return (
+          <select id={count} name={count}>
+            {availableSkills.map((skill) => {
+              return (
+                <option key={skill} value={skill}>
+                  {skill}
+                </option>
+              );
+            })}
+          </select>
+        );
       })}
     </div>
-  )
+  );
+  }
 
   if (tempChar.languageChoiceCount) {
-      languageSelect = (
+    let text = "Select a language.";
+    if (tempChar.languageChoiceCount > 1) {
+      text = `Select ${tempChar.languageChoiceCount} different languages.`;
+    }
+    languageSelect = (
       <div>
-        <p>Select {tempChar.languageChoiceCount} different languages.</p>
-        {languageCountingArray.map(count => {
-          <select id={count} name={count}>
-          {availableLanguages.map((language) => {
-            <option value={language}>{language}</option>
-          })}
-          </select>
+        <p>{text}</p>
+        {languageCountingArray.map((count) => {
+          return (
+            <select id={count} name={count}>
+              {availableLanguages.map((language) => {
+                return (
+                  <option key={language} value={language}>
+                    {language}
+                  </option>
+                );
+              })}
+            </select>
+          );
         })}
       </div>
-    )
+    );
   }
 
   if (tempChar.artisanToolChoiceCount) {
-      artisanToolSelect = (
+    let text = "Select an artisan tool.";
+    if (tempChar.languageChoiceCount > 1) {
+      text = `Select ${tempChar.artisanToolChoiceCount} different artisan tools.`;
+    }
+    artisanToolSelect = (
       <div>
-        <p>Select {tempChar.artisanToolChoiceCount} different artisan tools.</p>
-        {artisanToolCountingArray.map(count => {
-          <select id={count} name={count}>
-          {availableartisanTools.map((artisanTool) => {
-            <option value={artisanTool}>{artisanTool}</option>
-          })}
-          </select>
+        <p>{text}</p>
+        {artisanToolsCountingArray.map((count) => {
+          return (
+            <select id={count} name={count}>
+              {availableArtisanTools.map((artisanTool) => {
+                return (
+                  <option key={artisanTool} value={artisanTool}>
+                    {artisanTool}
+                  </option>
+                );
+              })}
+            </select>
+          );
         })}
       </div>
-    )
+    );
   }
 
   if (tempChar.instrumentChoiceCount) {
-      instrumentSelect = (
+    let text = "Select an instrument.";
+    if (tempChar.instrumentChoiceCount > 1) {
+      text = `Select ${tempChar.instrumentChoiceCount} different instruments.`;
+    }
+    instrumentSelect = (
       <div>
-        <p>Select {tempChar.instrumentChoiceCount} different instruments.</p>
-        {instrumentCountingArray.map(count => {
-          <select id={count} name={count}>
-          {availableinstruments.map((instrument) => {
-            <option value={instrument}>{instrument}</option>
-          })}
-          </select>
+        <p>{text}</p>
+        {instrumentCountingArray.map((count) => {
+          return (
+            <select id={count} name={count}>
+              {availableInstruments.map((instrument) => {
+                return (
+                  <option key={instrument} value={instrument}>
+                    {instrument}
+                  </option>
+                );
+              })}
+            </select>
+          );
         })}
       </div>
-    )
+    );
   }
 
   return (

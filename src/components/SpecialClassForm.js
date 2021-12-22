@@ -2,7 +2,7 @@ import React from "react";
 
 //maybe add warlock/cleric/other level 1 stuff here
 function SpecialClassForm({ submitSpecialClassForm, tempChar }) {
-  let editedTools = []
+  let editedTools = [];
   const availableToolList = [
     "Alchemist's supplies",
     "Brewer's supplies",
@@ -32,22 +32,25 @@ function SpecialClassForm({ submitSpecialClassForm, tempChar }) {
     "Shawm",
     "Viol",
   ];
-  availableToolList.forEach(tool => {
-    if (tempChar.toolProf.includes(tool) || tempChar.instrumentProf.includes(tool)) {
-      continue;
-    } else {
+  availableToolList.forEach((tool) => {
+    if (
+      !tempChar.toolProf.includes(tool) &&
+      !tempChar.instrumentProf.includes(tool)
+    ) {
       editedTools.push(tool);
     }
-  })
+  });
 
   return (
     <form onSubmit={submitSpecialClassForm}>
-      <label for="monkProf">Select an extra Monk tool/instrument proficiency</label>
-        <select id="monkProf" name="monkProf">
-          {editedTools.map((tool) => {
-            <option value={tool}>{tool}</option>
-          })}
-        </select>
+      <label htmlFor="monkProf">
+        Select an extra Monk tool/instrument proficiency
+      </label>
+      <select id="monkProf" name="monkProf">
+        {editedTools.map((tool) => {
+          return <option key={tool} value={tool}>{tool}</option>;
+        })}
+      </select>
       <button type="submit">Go to the next step!</button>
     </form>
   );

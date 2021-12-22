@@ -17,6 +17,8 @@ function CharacterControl() {
   // const character = useSelector((state) => state.character);
   const [shownComponent, setShownComponent] = useState("none");
   const auth = getAuth();
+  const [tempChar, setTempChar] = useState({});
+  const [step, setStep] = useState(1);
 
   const handleNewCharacter = () => {
 
@@ -40,7 +42,7 @@ function CharacterControl() {
   } else if (shownComponent === "newchar") {
     mainField = (
       <>
-        <NewChar handleNewCharacter={handleNewCharacter} uid={auth.currentUser.uid} />
+        <NewChar handleNewCharacter={handleNewCharacter} uid={auth.currentUser.uid} step={step} setStep={setStep} tempChar={tempChar} setTempChar={setTempChar}/>
       </>
     );
   } else if (shownComponent === "charlist") {

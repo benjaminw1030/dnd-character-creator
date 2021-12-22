@@ -12,8 +12,8 @@ export function raceMod(char) {
     case "Dragonborn":
       return {
         ...char,
-        str: char.str + 2,
-        cha: char.cha + 1,
+        str: { ...char.str, score: char.str.score + 2 },
+        cha: { ...char.cha, score: char.cha.score + 1 },
         speed: 30,
         size: "medium",
         languages: ["Common", "Draconic"],
@@ -22,8 +22,8 @@ export function raceMod(char) {
     case "Hill Dwarf":
       return {
         ...char,
-        con: char.con + 2,
-        wis: char.wis + 1,
+        con: { ...char.con, score: char.con.score + 2 },
+        wis: { ...char.wis, score: char.wis.score + 1 },
         speed: 25,
         size: "medium",
         languages: ["Common", "Dwarvish"],
@@ -31,17 +31,18 @@ export function raceMod(char) {
     case "Mountain Dwarf":
       return {
         ...char,
-        con: char.con + 2,
-        str: char.str + 2,
+        con: { ...char.con, score: char.con.score + 2 },
+        str: { ...char.str, score: char.str.score + 2 },
         speed: 25,
         size: "medium",
         languages: ["Common", "Dwarvish"],
+        armorProf: ["light armor", "medium armor"],
       };
     case "Drow":
       return {
         ...char,
-        dex: char.dex + 2,
-        cha: char.cha + 1,
+        dex: { ...char.dex, score: char.dex.score + 2 },
+        cha: { ...char.cha, score: char.cha.score + 1 },
         speed: 30,
         size: "medium",
         languages: ["Common", "Elvish"],
@@ -51,8 +52,8 @@ export function raceMod(char) {
     case "High Elf":
       return {
         ...char,
-        dex: char.dex + 2,
-        int: char.int + 1,
+        dex: { ...char.dex, score: char.dex.score + 2 },
+        int: { ...char.int, score: char.int.score + 1 },
         speed: 30,
         size: "medium",
         languages: ["Common", "Elvish"],
@@ -63,8 +64,8 @@ export function raceMod(char) {
     case "Wood Elf":
       return {
         ...char,
-        dex: char.dex + 2,
-        wis: char.wis + 1,
+        dex: { ...char.dex, score: char.dex.score + 2 },
+        wis: { ...char.wis, score: char.wis.score + 1 },
         speed: 35,
         size: "medium",
         languages: ["Common", "Elvish"],
@@ -74,8 +75,8 @@ export function raceMod(char) {
     case "Forest Gnome":
       return {
         ...char,
-        int: char.int + 2,
-        dex: char.dex + 1,
+        int: { ...char.int, score: char.int.score + 2 },
+        dex: { ...char.dex, score: char.dex.score + 1 },
         speed: 25,
         size: "small",
         languages: ["Common", "Gnomish"],
@@ -83,8 +84,8 @@ export function raceMod(char) {
     case "Rock Gnome":
       return {
         ...char,
-        int: char.int + 2,
-        con: char.con + 1,
+        int: { ...char.int, score: char.int.score + 2 },
+        con: { ...char.con, score: char.con.score + 1 },
         speed: 25,
         size: "small",
         languages: ["Common", "Gnomish"],
@@ -93,18 +94,17 @@ export function raceMod(char) {
     case "Half-Elf":
       return {
         ...char,
-        cha: char.cha + 2,
+        cha: { ...char.cha, score: char.cha.score + 2 },
         speed: 30,
         size: "medium",
         languages: ["Common", "Gnomish"],
-        skillChoiceCount: skillChoiceCount + 2,
         languageChoiceCount: 1,
       };
     case "Half-Orc":
       return {
         ...char,
-        str: char.str + 2,
-        con: char.con + 1,
+        str: { ...char.str, score: char.str.score + 2 },
+        con: { ...char.con, score: char.con.score + 1 },
         speed: 30,
         size: "medium",
         languages: ["Common", "Orc"],
@@ -113,8 +113,8 @@ export function raceMod(char) {
     case "Lightfoot Halfling":
       return {
         ...char,
-        dex: char.dex + 2,
-        cha: char.cha + 1,
+        dex: { ...char.dex, score: char.dex.score + 2 },
+        cha: { ...char.cha, score: char.cha.score + 1 },
         speed: 25,
         size: "small",
         languages: ["Common", "Halfling"],
@@ -122,8 +122,8 @@ export function raceMod(char) {
     case "Stout Halfling":
       return {
         ...char,
-        dex: char.dex + 2,
-        con: char.con + 1,
+        dex: { ...char.dex, score: char.dex.score + 2 },
+        con: { ...char.con, score: char.con.score + 1 },
         speed: 25,
         size: "small",
         languages: ["Common", "Halfling"],
@@ -131,12 +131,12 @@ export function raceMod(char) {
     case "Human":
       return {
         ...char,
-        str: char.str + 1,
-        dex: char.dex + 1,
-        con: char.con + 1,
-        int: char.int + 1,
-        wis: char.wis + 1,
-        cha: char.cha + 1,
+        str: { ...char.str, score: char.str.score + 1 },
+        dex: { ...char.dex, score: char.dex.score + 1 },
+        con: { ...char.con, score: char.con.score + 1 },
+        int: { ...char.int, score: char.int.score + 1 },
+        wis: { ...char.wis, score: char.wis.score + 1 },
+        cha: { ...char.cha, score: char.cha.score + 1 },
         speed: 30,
         size: "medium",
         languages: ["Common"],
@@ -145,8 +145,8 @@ export function raceMod(char) {
     case "Tiefling":
       return {
         ...char,
-        cha: char.cha + 2,
-        int: char.int + 1,
+        cha: { ...char.cha, score: char.cha.score + 1 },
+        int: { ...char.int, score: char.int.score + 1 },
         speed: 30,
         size: "medium",
         languages: ["Common", "Infernal"],
@@ -161,11 +161,15 @@ export function classMod(char) {
   switch (char.class) {
     case "Barbarian":
       char = calc.mergeWeaponProf(char, ["simple weapons", "martial weapons"]);
+      char = calc.mergeArmorProf(char, [
+        "light armor",
+        "medium armor",
+        "shields",
+      ]);
       return {
         ...char,
-        currentHP: calc.calcStartingHP(12, char.con),
-        maxHP: calc.calcStartingHP(12, char.con),
-        armorProf: ["light armor", "medium armor", "shields"],
+        currentHP: calc.calcStartingHP(char, 12),
+        maxHP: calc.calcStartingHP(char, 12),
         str: {
           ...char.str,
           save: true,
@@ -182,7 +186,7 @@ export function classMod(char) {
           "Perception",
           "Survival",
         ],
-        skillChoiceCount: skillChoiceCount + 2,
+        skillChoiceCount: char.skillChoiceCount + 2,
       };
     case "Bard":
       char = calc.mergeWeaponProf(char, [
@@ -192,11 +196,11 @@ export function classMod(char) {
         "rapiers",
         "shortswords",
       ]);
+      char = calc.mergeArmorProf(char, ["light armor"]);
       return {
         ...char,
-        currentHP: calc.calcStartingHP(8, char.con),
-        maxHP: calc.calcStartingHP(8, char.con),
-        armorProf: ["light armor"],
+        currentHP: calc.calcStartingHP(char, 8),
+        maxHP: calc.calcStartingHP(char, 8),
         instrumentChoiceCount: char.instrumentChoiceCount + 3,
         dex: {
           ...char.dex,
@@ -226,15 +230,19 @@ export function classMod(char) {
           "Stealth",
           "Survival",
         ],
-        skillChoiceCount: skillChoiceCount + 3,
+        skillChoiceCount: char.skillChoiceCount + 3,
       };
     case "Cleric":
       char = calc.mergeWeaponProf(char, ["simple weapons"]);
+      char = calc.mergeArmorProf(char, [
+        "light armor",
+        "medium armor",
+        "shields",
+      ]);
       return {
         ...char,
-        currentHP: calc.calcStartingHP(8, char.con),
-        maxHP: calc.calcStartingHP(8, char.con),
-        armorProf: ["light armor", "medium armor", "shields"],
+        currentHP: calc.calcStartingHP(char, 8),
+        maxHP: calc.calcStartingHP(char, 8),
         wis: {
           ...char.wis,
           save: true,
@@ -250,9 +258,15 @@ export function classMod(char) {
           "Persuasion",
           "Religion",
         ],
-        skillChoiceCount: skillChoiceCount + 2,
+        skillChoiceCount: char.skillChoiceCount + 2,
       };
     case "Druid":
+      char = calc.mergeLanguages(char, ["Druidic"]);
+      char = calc.mergeArmorProf(char, [
+        "light armor",
+        "medium armor",
+        "shields",
+      ]);
       char = calc.mergeWeaponProf(char, [
         "clubs",
         "daggers",
@@ -267,21 +281,8 @@ export function classMod(char) {
       ]);
       return {
         ...char,
-        currentHP: calc.calcStartingHP(8, char.con),
-        maxHP: calc.calcStartingHP(8, char.con),
-        armorProf: ["light armor", "medium armor", "shields"],
-        weaponProf: [
-          "clubs",
-          "daggers",
-          "darts",
-          "javelins",
-          "maces",
-          "quarterstaffs",
-          "scimitars",
-          "sickles",
-          "slings",
-          "spears",
-        ],
+        currentHP: calc.calcStartingHP(char, 8),
+        maxHP: calc.calcStartingHP(char, 8),
         toolProf: ["Herbalism kit"],
         int: {
           ...char.int,
@@ -301,15 +302,20 @@ export function classMod(char) {
           "Religion",
           "Survival",
         ],
-        skillChoiceCount: skillChoiceCount + 2,
+        skillChoiceCount: char.skillChoiceCount + 2,
       };
     case "Fighter":
       char = calc.mergeWeaponProf(char, ["simple weapons", "martial weapons"]);
+      char = calc.mergeArmorProf(char, [
+        "light armor",
+        "medium armor",
+        "heavy armor",
+        "shields",
+      ]);
       return {
         ...char,
-        currentHP: calc.calcStartingHP(10, char.con),
-        maxHP: calc.calcStartingHP(10, char.con),
-        armorProf: ["light armor", "medium armor", "heavy armor", "shields"],
+        currentHP: calc.calcStartingHP(char, 10),
+        maxHP: calc.calcStartingHP(char, 10),
         str: {
           ...char.str,
           save: true,
@@ -329,14 +335,14 @@ export function classMod(char) {
           "Religion",
           "Survival",
         ],
-        skillChoiceCount: skillChoiceCount + 2,
+        skillChoiceCount: char.skillChoiceCount + 2,
       };
     case "Monk":
       char = calc.mergeWeaponProf(char, ["simple weapons", "shortswords"]);
       return {
         ...char,
-        currentHP: calc.calcStartingHP(8, char.con),
-        maxHP: calc.calcStartingHP(8, char.con),
+        currentHP: calc.calcStartingHP(char, 8),
+        maxHP: calc.calcStartingHP(char, 8),
         str: {
           ...char.str,
           save: true,
@@ -353,15 +359,15 @@ export function classMod(char) {
           "Religion",
           "Stealth",
         ],
-        skillChoiceCount: skillChoiceCount + 2,
+        skillChoiceCount: char.skillChoiceCount + 2,
       };
     case "Paladin":
       char = calc.mergeWeaponProf(char, ["simple weapons", "martial weapons"]);
+      char = calc.mergeArmorProf(char, ["light armor", "medium armor", "heavy armor", "shields"]);
       return {
         ...char,
-        currentHP: calc.calcStartingHP(10, char.con),
-        maxHP: calc.calcStartingHP(10, char.con),
-        armorProf: ["light armor", "medium armor", "heavy armor", "shields"],
+        currentHP: calc.calcStartingHP(char, 10),
+        maxHP: calc.calcStartingHP(char, 10),
         wis: {
           ...char.wis,
           save: true,
@@ -378,15 +384,15 @@ export function classMod(char) {
           "Persuasion",
           "Religion",
         ],
-        skillChoiceCount: skillChoiceCount + 2,
+        skillChoiceCount: char.skillChoiceCount + 2,
       };
     case "Ranger":
       char = calc.mergeWeaponProf(char, ["simple weapons", "martial weapons"]);
+      char = calc.mergeArmorProf(char, ["light armor", "medium armor", "shields"]);
       return {
         ...char,
-        currentHP: calc.calcStartingHP(10, char.con),
-        maxHP: calc.calcStartingHP(10, char.con),
-        armorProf: ["light armor", "medium armor", "shields"],
+        currentHP: calc.calcStartingHP(char, 10),
+        maxHP: calc.calcStartingHP(char, 10),
         str: {
           ...char.str,
           save: true,
@@ -405,9 +411,11 @@ export function classMod(char) {
           "Stealth",
           "Survival",
         ],
-        skillChoiceCount: skillChoiceCount + 3,
+        skillChoiceCount: char.skillChoiceCount + 3,
       };
     case "Rogue":
+      char = calc.mergeLanguages(char, ["Thieves' Cant"]);
+      char = calc.mergeArmorProf(char, ["light armor"]);
       char = calc.mergeWeaponProf(char, [
         "simple weapons",
         "hand crossbows",
@@ -418,9 +426,8 @@ export function classMod(char) {
       char = calc.mergeToolProf(char, ["Thieves' tools"]);
       return {
         ...char,
-        currentHP: calc.calcStartingHP(8, char.con),
-        maxHP: calc.calcStartingHP(8, char.con),
-        armorProf: ["light armor"],
+        currentHP: calc.calcStartingHP(char, 8),
+        maxHP: calc.calcStartingHP(char, 8),
         dex: {
           ...char.dex,
           save: true,
@@ -442,7 +449,7 @@ export function classMod(char) {
           "Sleight of Hand",
           "Stealth",
         ],
-        skillChoiceCount: skillChoiceCount + 4,
+        skillChoiceCount: char.skillChoiceCount + 4,
       };
     case "Sorcerer":
       char = calc.mergeWeaponProf(char, [
@@ -454,8 +461,8 @@ export function classMod(char) {
       ]);
       return {
         ...char,
-        currentHP: calc.calcStartingHP(6, char.con),
-        maxHP: calc.calcStartingHP(6, char.con),
+        currentHP: calc.calcStartingHP(char, 6),
+        maxHP: calc.calcStartingHP(char, 6),
         con: {
           ...char.con,
           save: true,
@@ -472,15 +479,15 @@ export function classMod(char) {
           "Persuasion",
           "Religion",
         ],
-        skillChoiceCount: skillChoiceCount + 2,
+        skillChoiceCount: char.skillChoiceCount + 2,
       };
     case "Warlock":
       char = calc.mergeWeaponProf(char, ["simple weapons"]);
+      char = calc.mergeArmorProf(char, ["light armor"]);
       return {
         ...char,
-        currentHP: calc.calcStartingHP(8, char.con),
-        maxHP: calc.calcStartingHP(8, char.con),
-        armorProf: ["light armor"],
+        currentHP: calc.calcStartingHP(char, 8),
+        maxHP: calc.calcStartingHP(char, 8),
         wis: {
           ...char.wis,
           save: true,
@@ -498,7 +505,7 @@ export function classMod(char) {
           "Nature",
           "Religion",
         ],
-        skillChoiceCount: skillChoiceCount + 2,
+        skillChoiceCount: char.skillChoiceCount + 2,
       };
     case "Wizard":
       char = calc.mergeWeaponProf(char, [
@@ -510,8 +517,8 @@ export function classMod(char) {
       ]);
       return {
         ...char,
-        currentHP: calc.calcStartingHP(6, char.con),
-        maxHP: calc.calcStartingHP(6, char.con),
+        currentHP: calc.calcStartingHP(char, 8),
+        maxHP: calc.calcStartingHP(char, 8),
         int: {
           ...char.int,
           save: true,
@@ -528,7 +535,7 @@ export function classMod(char) {
           "Medicine",
           "Religion",
         ],
-        skillChoiceCount: skillChoiceCount + 2,
+        skillChoiceCount: char.skillChoiceCount + 2,
       };
     default:
       return char;

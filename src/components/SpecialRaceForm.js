@@ -2,10 +2,10 @@ import React from "react";
 
 function SpecialRaceForm({ tempChar, submitSpecialRaceForm }) {
   let raceSelect = null;
-  if (char.race === "Dragonborn") {
+  if (tempChar.race === "Dragonborn") {
     raceSelect = (
       <div>
-        <label for="dragonbornType">Select a dragonborn type</label>
+        <label htmlFor="dragonbornType">Select a dragonborn type</label>
         <select id="dragonType" name="dragonType">
           <option value="Black">Black</option>
           <option value="Blue">Blue</option>
@@ -26,7 +26,7 @@ function SpecialRaceForm({ tempChar, submitSpecialRaceForm }) {
   ) {
     raceSelect = (
       <div>
-        <label for="dwarfTool">Select extra dwarf tool proficiency</label>
+        <label htmlFor="dwarfTool">Select extra dwarf tool proficiency</label>
         <select id="dwarfTool" name="dwarfTool">
           <option value="Smith's tools">Smith's tools</option>
           <option value="Brewer supplies">Brewer supplies</option>
@@ -35,7 +35,7 @@ function SpecialRaceForm({ tempChar, submitSpecialRaceForm }) {
       </div>
     );
   } else if (tempChar.race === "Half-Elf") {
-    let availableSkills = []
+    let availableSkills = [];
     const skillList = [
       "Acrobatics",
       "Animal Handling",
@@ -55,20 +55,18 @@ function SpecialRaceForm({ tempChar, submitSpecialRaceForm }) {
       "Sleight of Hand",
       "Stealth",
       "Survival",
-    ]
-    skillList.forEach(skill => {
-      if (tempChar.skillProf.includes(skill)) {
-        continue;
-      } else {
+    ];
+    skillList.forEach((skill) => {
+      if (!tempChar.skillProf.includes(skill)) {
         availableSkills.push(skill);
       }
-    })
+    });
     raceSelect = (
       <div>
         <p>
           Half Elves may increase two extra abilty scores other than charisma.
         </p>
-        <label for="halfElfScore1">First ability:</label>
+        <label htmlFor="halfElfScore1">First ability:</label>
         <select id="halfElfScore1" name="halfElfScore1">
           <option value="str">Strength</option>
           <option value="dex">Dexterity</option>
@@ -76,7 +74,7 @@ function SpecialRaceForm({ tempChar, submitSpecialRaceForm }) {
           <option value="int">Intelligence</option>
           <option value="wis">Wisdom</option>
         </select>
-        <label for="halfElfScore2">Second ability:</label>
+        <label htmlFor="halfElfScore2">Second ability:</label>
         <select id="halfElfScore2" name="halfElfScore2">
           <option value="str">Strength</option>
           <option value="dex">Dexterity</option>
@@ -85,16 +83,16 @@ function SpecialRaceForm({ tempChar, submitSpecialRaceForm }) {
           <option value="wis">Wisdom</option>
         </select>
         <p>Half Elves may choose two extra skills.</p>
-        <label for="halfElfSkill1">First skill:</label>
+        <label htmlFor="halfElfSkill1">First skill:</label>
         <select id="halfElfSkill1" name="halfElfSkill1">
           {availableSkills.map((skill) => {
-            <option value={skill}>{skill}</option>
+            return <option key={skill} value={skill}>{skill}</option>;
           })}
         </select>
-        <label for="halfElfSkill2">Second skill:</label>
+        <label htmlFor="halfElfSkill2">Second skill:</label>
         <select id="halfElfSkill2" name="halfElfSkill2">
           {availableSkills.map((skill) => {
-            <option value={skill}>{skill}</option>
+            return <option key={skill} value={skill}>{skill}</option>;
           })}
         </select>
       </div>
@@ -103,7 +101,7 @@ function SpecialRaceForm({ tempChar, submitSpecialRaceForm }) {
 
   return (
     <>
-      <form onsubmit={submitSpecialRaceForm}>
+      <form onSubmit={submitSpecialRaceForm}>
         {raceSelect}
         <button type="submit">Go to the next step!</button>
       </form>

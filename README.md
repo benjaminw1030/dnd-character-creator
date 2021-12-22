@@ -101,4 +101,5 @@ All in all, I think you have a great setup here for 40 hours of work. Your MVP i
 * 1:08 PM returning from lunch
 * 5:02 PM stopped work
 ### 12/22/2021
-* 8:44 AM Resume work
+* 8:44 AM Resume work.
+* 12:46 PM Break for lunch.

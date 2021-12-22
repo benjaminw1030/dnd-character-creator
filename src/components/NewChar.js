@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { raceMod, classMod, backgroundMod } from "../utilities/Mod";
 import { useFirestore } from "react-redux-firebase";
 import {
@@ -6,16 +6,25 @@ import {
   mergeToolProf,
   mergeInstrumentProf,
   mergeSkillProf,
+  mergeLanguages,
+  isUniqueArray,
 } from "../utilities/Calc";
 import MainCharForm from "./MainCharForm";
 import SpecialRaceForm from "./SpecialRaceForm";
 import SpecialClassForm from "./SpecialClassForm";
 import ProficienciesForm from "./ProficienciesForm";
 
-export default function NewChar({ handleNewCharacter, uid }) {
+export default function NewChar({
+  handleNewCharacter,
+  uid,
+  tempChar,
+  setTempChar,
+  step,
+  setStep,
+}) {
   const firestore = useFirestore();
-  const [tempChar, setTempChar] = useState({});
-  const [finishForm, setFinishForm] = useState(false);
+  // const [tempChar, setTempChar] = useState({});
+  // const [step, setStep] = useState(1);
   let formDisplay;
   // function addCharacterToFirestore(event) {
   //   event.preventDefault();
@@ -30,6 +39,15 @@ export default function NewChar({ handleNewCharacter, uid }) {
 
   function submitMainForm(event) {
     event.preventDefault();
+
+    // console.log(event.target)
+    // console.log(event.target.length)
+    for (let i = 0; i < event.target.length; i++) {
+      console.log(event.target[i].name);
+      console.log(event.target[i].value);
+    }
+    //   console.log(item.value)
+    // })
     const race = event.target.race.value;
     const charClass = event.target.class.value;
     const baseChar = {
@@ -52,31 +70,32 @@ export default function NewChar({ handleNewCharacter, uid }) {
       instrumentProf: [],
       skillSelection: [],
       str: {
-        score: event.target.str.value,
+        score: parseInt(event.target.str.value),
         save: false,
       },
       dex: {
-        score: event.target.dex.value,
+        score: parseInt(event.target.dex.value),
         save: false,
       },
       con: {
-        score: event.target.con.value,
+        score: parseInt(event.target.con.value),
         save: false,
       },
       int: {
-        score: event.target.int.value,
+        score: parseInt(event.target.int.value),
         save: false,
       },
       wis: {
-        score: event.target.wis.value,
+        score: parseInt(event.target.wis.value),
         save: false,
       },
       cha: {
-        score: event.target.cha.value,
+        score: parseInt(event.target.cha.value),
         save: false,
       },
     };
     const classRaceBackgroundChar = backgroundMod(classMod(raceMod(baseChar)));
+    // console.log(classRaceBackgroundChar);
     setTempChar(classRaceBackgroundChar);
     if (
       race === "Half-Elf" ||
@@ -92,7 +111,7 @@ export default function NewChar({ handleNewCharacter, uid }) {
 
   function submitSpecialRaceForm(event) {
     event.preventDefault();
-    if (char.race === "Half-Elf") {
+    if (tempChar.race === "Half-Elf") {
       const abilityScore1 = event.target.halfElfScore1.value;
       const abilityScore2 = event.target.halfElfScore2.value;
       const skill1 = event.target.halfElfSkill1.value;
@@ -101,30 +120,39 @@ export default function NewChar({ handleNewCharacter, uid }) {
       if (abilityScore1 === abilityScore2) {
         alert("Half-Elves cannot increase the same ability score twice!");
         return;
-      } else if ((skill1 = skill2)) {
+      } else if (skill1 === skill2) {
         alert("Please choose two different skills!");
         return;
       } else {
-        skillsToAdd = [skill1, skill2]
+        const skillsToAdd = [skill1, skill2];
         halfElfChar = increaseAbilityScoreByOne(halfElfChar, abilityScore1);
         halfElfChar = increaseAbilityScoreByOne(halfElfChar, abilityScore2);
         halfElfChar = mergeSkillProf(halfElfChar, skillsToAdd);
+        console.log(halfElfChar);
         setTempChar(halfElfChar);
       }
-    } else if (char.race === "Dragonborn") {
-      setTempChar({
+    } else if (tempChar.race === "Dragonborn") {
+      const dragonbornChar = {
         ...tempChar,
         dragonType: event.target.dragonType.value,
-      });
-    } else if (char.race === "Hill Dwarf" || char.race === "Mountain Dwarf") {
-      setTempChar(mergeToolProf(char, event.target.dwarfTool.value));
+      };
+      console.log(dragonbornChar);
+      setTempChar(dragonbornChar);
+    } else if (
+      tempChar.race === "Hill Dwarf" ||
+      tempChar.race === "Mountain Dwarf"
+    ) {
+      const dwarfChar = mergeToolProf(tempChar, [event.target.dwarfTool.value]);
+      console.log(dwarfChar);
+      setTempChar(dwarfChar);
     }
-    char.class === monk ? setStep(3) : setStep(4);
+    tempChar.class === "Monk" ? setStep(3) : setStep(4);
   }
 
   function submitSpecialClassForm(event) {
     event.preventDefault();
     const tool = event.target.monkProf.value;
+    let monkChar = {};
     switch (tool) {
       case "Bagpipes":
       case "Drum":
@@ -136,16 +164,92 @@ export default function NewChar({ handleNewCharacter, uid }) {
       case "Pan Flute":
       case "Shawm":
       case "Viol":
-        setTempChar(mergeInstrumentProf(char, tool));
+        monkChar = mergeInstrumentProf(tempChar, [tool]);
+        console.log(monkChar);
+        setTempChar(monkChar);
+        break;
       default:
-        setTempChar(mergeToolProf(char, tool));
+        monkChar = mergeToolProf(tempChar, [tool]);
+        console.log(monkChar);
+        setTempChar(monkChar);
     }
     setStep(4);
   }
 
   function submitProficienciesForm(event) {
     event.preventDefault();
-    
+    let skills = [];
+    let artisanTools = [];
+    let languages = [];
+    let instruments = [];
+    for (let i = 0; i < event.target.length; i++) {
+      if (event.target[i].name.startsWith("skill")) {
+        skills.push(event.target[i].value);
+      } else if (event.target[i].name.startsWith("language")) {
+        languages.push(event.target[i].value);
+      } else if (event.target[i].name.startsWith("artisanTool")) {
+        artisanTools.push(event.target[i].value);
+      } else if (event.target[i].name.startsWith("instrument")) {
+        instruments.push(event.target[i].value);
+      }
+    }
+    if (!isUniqueArray(skills)) {
+      alert("Please choose different skills!");
+      return;
+    }
+    if (!isUniqueArray(artisanTools)) {
+      alert("Please choose different artisan tools!");
+      return;
+    }
+    if (!isUniqueArray(languages)) {
+      alert("Please choose different languages!");
+      return;
+    }
+    if (!isUniqueArray(instruments)) {
+      alert("Please choose different instruments!");
+      return;
+    }
+    const finalChar = mergeSkillProf(
+      mergeLanguages(
+        mergeToolProf(mergeInstrumentProf(tempChar, instruments), artisanTools),
+        languages
+      ),
+      skills
+    );
+    const charToSave = {
+      uid: finalChar.uid,
+      name: finalChar.name,
+      alignment: finalChar.alignment,
+      race: finalChar.race,
+      class: finalChar.class,
+      background: finalChar.background,
+      dragonType: finalChar.dragonType,
+      armorProf: finalChar.armorProf,
+      weaponProf: finalChar.weaponProf,
+      languages: finalChar.languages,
+      skillProf: finalChar.skillProf,
+      toolProf: finalChar.toolProf,
+      instrumentProf: finalChar.instrumentProf,
+      ability: {
+        str: finalChar.str,
+        dex: finalChar.dex,
+        con: finalChar.con,
+        int: finalChar.int,
+        wis: finalChar.wis,
+        cha: finalChar.cha,
+      },
+    };
+    console.log(charToSave);
+    // console.log(finalChar);
+    // console.log(skills);
+    // console.log(artisanTools);
+    // console.log(instruments);
+    // console.log(languages);
+
+    // for (let i = 1; i <= tempChar.instrumentChoiceCount; i++) {
+    //   instruments.push(event.target.instrument{i})
+    // }
+    setStep(1);
   }
 
   if (step === 1) {
@@ -173,129 +277,7 @@ export default function NewChar({ handleNewCharacter, uid }) {
     );
   }
 
-  return (
-    <>
-      {formDisplay}
-      {/* {step === 1 ? (
-        <form onSubmit={submitMainForm}>
-          <input type="text" name="name" placeholder="Character Name" />
-          <label for="alignment">Select Alignment</label>
-          <select id="alignment" name="alignment">
-            <option value="None">None</option>
-            <option value="Lawful Good">Lawful Good</option>
-            <option value="Neutral Good">Neutral Good</option>
-            <option value="Chaotic Good">Chaotic Good</option>
-            <option value="Lawful Neutral">Lawful Neutral</option>
-            <option value="Neutral">Neutral</option>
-            <option value="Chaotic Neutral">Chaotic Neutral</option>
-            <option value="Lawful Evil">Lawful Evil</option>
-            <option value="Neutral Evil">Neutral Evil</option>
-            <option value="Chaotic Evil">Chaotic Evil</option>
-          </select>
-          <label for="race">Select Race</label>
-          <select id="race" name="race">
-            <option value="Dragonborn">Dragonborn</option>
-            <option value="Hill Dwarf">Dwarf (Hill Dwarf)</option>
-            <option value="Mountain Dwarf">Dwarf (Mountain)</option>
-            <option value="Drow">Elf (Drow)</option>
-            <option value="High Elf">Elf (High)</option>
-            <option value="Wood Elf">Elf (Wood)</option>
-            <option value="Forest Gnome">Gnome (Forest)</option>
-            <option value="Rock Gnome">Gnome (Rock)</option>
-            <option value="Half-Elf">Half-Elf</option>
-            <option value="Half-Orc">Half-Orc</option>
-            <option value="Lightfoot Halfling">Halfling (Lightfoot)</option>
-            <option value="Stout Halfling">Halfling (Stout)</option>
-            <option value="Human">Human</option>
-            <option value="Tiefling">Tiefling</option>
-          </select>
-          <label for="class">Select Class</label>
-          <select id="class" name="class">
-            <option value="Barbarian">Barbarian</option>
-            <option value="Bard">Bard</option>
-            <option value="Cleric">Cleric</option>
-            <option value="Druid">Druid</option>
-            <option value="Fighter">Fighter</option>
-            <option value="Monk">Monk</option>
-            <option value="Paladin">Paladin</option>
-            <option value="Ranger">Ranger</option>
-            <option value="Rogue">Rogue</option>
-            <option value="Sorcerer">Sorcerer</option>
-            <option value="Warlock">Warlock</option>
-            <option value="Wizard">Wizard</option>
-          </select>
-          <label for="background">Select Background</label>
-          <select id="background" name="background">
-            <option value="Acolyte">Acolyte</option>
-            <option value="Charlatan">Charlatan</option>
-            <option value="Criminal">Criminal</option>
-            <option value="Entertainer">Entertainer</option>
-            <option value="Folk Hero">Folk Hero</option>
-            <option value="Guild Artisan">Guild Artisan</option>
-            <option value="Hermit">Hermit</option>
-            <option value="Noble">Noble</option>
-            <option value="Outlander">Outlander</option>
-            <option value="Sage">Sage</option>
-            <option value="Sailor">Sailor</option>
-            <option value="Soldier">Soldier</option>
-            <option value="Urchin">Urchin</option>
-          </select>
-          <p>Starting Ability Scores:</p>
-          <input
-            type="number"
-            name="str"
-            placeholder="Strength"
-            min="3"
-            max="18"
-            step="1"
-          />
-          <input
-            type="number"
-            name="dex"
-            placeholder="Dexterity"
-            min="3"
-            max="18"
-            step="1"
-          />
-          <input
-            type="number"
-            name="con"
-            placeholder="Constitution"
-            min="3"
-            max="18"
-            step="1"
-          />
-          <input
-            type="number"
-            name="int"
-            placeholder="Intelligence"
-            min="3"
-            max="18"
-            step="1"
-          />
-          <input
-            type="number"
-            name="wis"
-            placeholder="Wisdom"
-            min="3"
-            max="18"
-            step="1"
-          />
-          <input
-            type="number"
-            name="cha"
-            placeholder="Charisma"
-            min="3"
-            max="18"
-            step="1"
-          />
-          <button type="submit">Go to the next step!</button>
-        </form>
-      ) : step === 2 (
-        <SpecialRaceForm char={tempChar} submitSpecialRaceForm={submitSpecialRaceForm} />
-      )} */}
-    </>
-  );
+  return <>{formDisplay}</>;
 }
 
 //potentially add code to roll ability score or use standard array later

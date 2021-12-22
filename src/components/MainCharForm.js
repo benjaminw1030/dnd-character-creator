@@ -4,7 +4,7 @@ function MainCharForm({ submitMainForm }) {
   return (
     <form onSubmit={submitMainForm}>
       <input type="text" name="name" placeholder="Character Name" />
-      <label for="alignment">Select Alignment</label>
+      <label htmlFor="alignment">Select Alignment</label>
       <select id="alignment" name="alignment">
         <option value="None">None</option>
         <option value="Lawful Good">Lawful Good</option>
@@ -17,7 +17,7 @@ function MainCharForm({ submitMainForm }) {
         <option value="Neutral Evil">Neutral Evil</option>
         <option value="Chaotic Evil">Chaotic Evil</option>
       </select>
-      <label for="race">Select Race</label>
+      <label htmlFor="race">Select Race</label>
       <select id="race" name="race">
         <option value="Dragonborn">Dragonborn</option>
         <option value="Hill Dwarf">Dwarf (Hill Dwarf)</option>
@@ -34,7 +34,7 @@ function MainCharForm({ submitMainForm }) {
         <option value="Human">Human</option>
         <option value="Tiefling">Tiefling</option>
       </select>
-      <label for="class">Select Class</label>
+      <label htmlFor="class">Select Class</label>
       <select id="class" name="class">
         <option value="Barbarian">Barbarian</option>
         <option value="Bard">Bard</option>
@@ -49,7 +49,7 @@ function MainCharForm({ submitMainForm }) {
         <option value="Warlock">Warlock</option>
         <option value="Wizard">Wizard</option>
       </select>
-      <label for="background">Select Background</label>
+      <label htmlFor="background">Select Background</label>
       <select id="background" name="background">
         <option value="Acolyte">Acolyte</option>
         <option value="Charlatan">Charlatan</option>
