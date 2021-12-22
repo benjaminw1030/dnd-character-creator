@@ -97,7 +97,7 @@ export function raceMod(char) {
         speed: 30,
         size: "medium",
         languages: ["Common", "Gnomish"],
-        skillChoiceCount: 2,
+        skillChoiceCount: skillChoiceCount + 2,
         languageChoiceCount: 1,
       };
     case "Half-Orc":
@@ -182,7 +182,7 @@ export function classMod(char) {
           "Perception",
           "Survival",
         ],
-        skillChoiceCount: 2,
+        skillChoiceCount: skillChoiceCount + 2,
       };
     case "Bard":
       char = calc.mergeWeaponProf(char, [
@@ -226,7 +226,7 @@ export function classMod(char) {
           "Stealth",
           "Survival",
         ],
-        skillChoiceCount: 3,
+        skillChoiceCount: skillChoiceCount + 3,
       };
     case "Cleric":
       char = calc.mergeWeaponProf(char, ["simple weapons"]);
@@ -250,7 +250,7 @@ export function classMod(char) {
           "Persuasion",
           "Religion",
         ],
-        skillChoiceCount: 2,
+        skillChoiceCount: skillChoiceCount + 2,
       };
     case "Druid":
       char = calc.mergeWeaponProf(char, [
@@ -301,7 +301,7 @@ export function classMod(char) {
           "Religion",
           "Survival",
         ],
-        skillChoiceCount: 2,
+        skillChoiceCount: skillChoiceCount + 2,
       };
     case "Fighter":
       char = calc.mergeWeaponProf(char, ["simple weapons", "martial weapons"]);
@@ -329,7 +329,7 @@ export function classMod(char) {
           "Religion",
           "Survival",
         ],
-        skillChoiceCount: 2,
+        skillChoiceCount: skillChoiceCount + 2,
       };
     case "Monk":
       char = calc.mergeWeaponProf(char, ["simple weapons", "shortswords"]);
@@ -353,7 +353,7 @@ export function classMod(char) {
           "Religion",
           "Stealth",
         ],
-        skillChoiceCount: 2,
+        skillChoiceCount: skillChoiceCount + 2,
       };
     case "Paladin":
       char = calc.mergeWeaponProf(char, ["simple weapons", "martial weapons"]);
@@ -378,7 +378,7 @@ export function classMod(char) {
           "Persuasion",
           "Religion",
         ],
-        skillChoiceCount: 2,
+        skillChoiceCount: skillChoiceCount + 2,
       };
     case "Ranger":
       char = calc.mergeWeaponProf(char, ["simple weapons", "martial weapons"]);
@@ -405,7 +405,7 @@ export function classMod(char) {
           "Stealth",
           "Survival",
         ],
-        skillChoiceCount: 3,
+        skillChoiceCount: skillChoiceCount + 3,
       };
     case "Rogue":
       char = calc.mergeWeaponProf(char, [
@@ -442,7 +442,7 @@ export function classMod(char) {
           "Sleight of Hand",
           "Stealth",
         ],
-        skillChoiceCount: 4,
+        skillChoiceCount: skillChoiceCount + 4,
       };
     case "Sorcerer":
       char = calc.mergeWeaponProf(char, [
@@ -472,7 +472,7 @@ export function classMod(char) {
           "Persuasion",
           "Religion",
         ],
-        skillChoiceCount: 2,
+        skillChoiceCount: skillChoiceCount + 2,
       };
     case "Warlock":
       char = calc.mergeWeaponProf(char, ["simple weapons"]);
@@ -498,7 +498,7 @@ export function classMod(char) {
           "Nature",
           "Religion",
         ],
-        skillChoiceCount: 2,
+        skillChoiceCount: skillChoiceCount + 2,
       };
     case "Wizard":
       char = calc.mergeWeaponProf(char, [
@@ -528,7 +528,7 @@ export function classMod(char) {
           "Medicine",
           "Religion",
         ],
-        skillChoiceCount: 2,
+        skillChoiceCount: skillChoiceCount + 2,
       };
     default:
       return char;

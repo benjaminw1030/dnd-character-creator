@@ -99,3 +99,4 @@ All in all, I think you have a great setup here for 40 hours of work. Your MVP i
 * 9:39 AM Start coding
 * 12:09 PM Lunch Break
 * 1:08 PM returning from lunch
+* 5:02 PM stopped work

@@ -1,8 +1,9 @@
 import React from "react";
 
-function MainCharForm({ submitSpecialClassForm, tempChar }) {
+//maybe add warlock/cleric/other level 1 stuff here
+function SpecialClassForm({ submitSpecialClassForm, tempChar }) {
   let editedTools = []
-  let availableTools = [
+  const availableToolList = [
     "Alchemist's supplies",
     "Brewer's supplies",
     "Calligrapher's supplies",
@@ -31,7 +32,7 @@ function MainCharForm({ submitSpecialClassForm, tempChar }) {
     "Shawm",
     "Viol",
   ];
-  availableTools.forEach(tool => {
+  availableToolList.forEach(tool => {
     if (tempChar.toolProf.includes(tool) || tempChar.instrumentProf.includes(tool)) {
       continue;
     } else {
@@ -52,4 +53,4 @@ function MainCharForm({ submitSpecialClassForm, tempChar }) {
   );
 }
 
-export default MainCharForm;
+export default SpecialClassForm;

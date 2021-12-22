@@ -20,7 +20,10 @@ function SpecialRaceForm({ tempChar, submitSpecialRaceForm }) {
         </select>
       </div>
     );
-  } else if (tempChar.race === "Hill Dwarf" || tempChar.race === "Mountain Dwarf") {
+  } else if (
+    tempChar.race === "Hill Dwarf" ||
+    tempChar.race === "Mountain Dwarf"
+  ) {
     raceSelect = (
       <div>
         <label for="dwarfTool">Select extra dwarf tool proficiency</label>
@@ -32,29 +35,72 @@ function SpecialRaceForm({ tempChar, submitSpecialRaceForm }) {
       </div>
     );
   } else if (tempChar.race === "Half-Elf") {
-    <div>
-      <p>
-        Half Elves may increase two extra abilty scores other than charisma.
-      </p>
-      <label for="halfElfScore1">First ability:</label>
-      <select id="halfElfScore1" name="halfElfScore1">
-        <option value="str">Strength</option>
-        <option value="dex">Dexterity</option>
-        <option value="con">Constitution</option>
-        <option value="int">Intelligence</option>
-        <option value="wis">Wisdom</option>
-      </select>
-      <label for="halfElfScore2">Second ability:</label>
-      <select id="halfElfScore2" name="halfElfScore2">
-        <option value="str">Strength</option>
-        <option value="dex">Dexterity</option>
-        <option value="con">Constitution</option>
-        <option value="int">Intelligence</option>
-        <option value="wis">Wisdom</option>
-      </select>
-    </div>;
+    let availableSkills = []
+    const skillList = [
+      "Acrobatics",
+      "Animal Handling",
+      "Arcana",
+      "Athletics",
+      "Deception",
+      "History",
+      "Insight",
+      "Intimidation",
+      "Investigation",
+      "Medicine",
+      "Nature",
+      "Perception",
+      "Performance",
+      "Persuasion",
+      "Religion",
+      "Sleight of Hand",
+      "Stealth",
+      "Survival",
+    ]
+    skillList.forEach(skill => {
+      if (tempChar.skillProf.includes(skill)) {
+        continue;
+      } else {
+        availableSkills.push(skill);
+      }
+    })
+    raceSelect = (
+      <div>
+        <p>
+          Half Elves may increase two extra abilty scores other than charisma.
+        </p>
+        <label for="halfElfScore1">First ability:</label>
+        <select id="halfElfScore1" name="halfElfScore1">
+          <option value="str">Strength</option>
+          <option value="dex">Dexterity</option>
+          <option value="con">Constitution</option>
+          <option value="int">Intelligence</option>
+          <option value="wis">Wisdom</option>
+        </select>
+        <label for="halfElfScore2">Second ability:</label>
+        <select id="halfElfScore2" name="halfElfScore2">
+          <option value="str">Strength</option>
+          <option value="dex">Dexterity</option>
+          <option value="con">Constitution</option>
+          <option value="int">Intelligence</option>
+          <option value="wis">Wisdom</option>
+        </select>
+        <p>Half Elves may choose two extra skills.</p>
+        <label for="halfElfSkill1">First skill:</label>
+        <select id="halfElfSkill1" name="halfElfSkill1">
+          {availableSkills.map((skill) => {
+            <option value={skill}>{skill}</option>
+          })}
+        </select>
+        <label for="halfElfSkill2">Second skill:</label>
+        <select id="halfElfSkill2" name="halfElfSkill2">
+          {availableSkills.map((skill) => {
+            <option value={skill}>{skill}</option>
+          })}
+        </select>
+      </div>
+    );
   }
- 
+
   return (
     <>
       <form onsubmit={submitSpecialRaceForm}>

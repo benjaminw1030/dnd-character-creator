@@ -1,13 +1,16 @@
 import React from "react";
-import * as mod from "../utilities/Mod";
+import { raceMod, classMod, backgroundMod } from "../utilities/Mod";
 import { useFirestore } from "react-redux-firebase";
-import SpecialRaceForms from "./SpecialRaceForm";
 import {
   increaseAbilityScoreByOne,
   mergeToolProf,
   mergeInstrumentProf,
+  mergeSkillProf,
 } from "../utilities/Calc";
 import MainCharForm from "./MainCharForm";
+import SpecialRaceForm from "./SpecialRaceForm";
+import SpecialClassForm from "./SpecialClassForm";
+import ProficienciesForm from "./ProficienciesForm";
 
 export default function NewChar({ handleNewCharacter, uid }) {
   const firestore = useFirestore();
@@ -29,7 +32,7 @@ export default function NewChar({ handleNewCharacter, uid }) {
     event.preventDefault();
     const race = event.target.race.value;
     const charClass = event.target.class.value;
-    setTempChar({
+    const baseChar = {
       uid: uid,
       name: event.target.name.value,
       alignment: event.target.alignment.value,
@@ -38,7 +41,6 @@ export default function NewChar({ handleNewCharacter, uid }) {
       background: event.target.background.value,
       instrumentChoiceCount: 0,
       skillChoiceCount: 0,
-      toolChoiceCount: 0,
       languageChoiceCount: 0,
       artisanToolChoiceCount: 0,
       dragonType: null,
@@ -73,7 +75,9 @@ export default function NewChar({ handleNewCharacter, uid }) {
         score: event.target.cha.value,
         save: false,
       },
-    });
+    };
+    const classRaceBackgroundChar = backgroundMod(classMod(raceMod(baseChar)));
+    setTempChar(classRaceBackgroundChar);
     if (
       race === "Half-Elf" ||
       race === "Hill Dwarf" ||
@@ -91,16 +95,25 @@ export default function NewChar({ handleNewCharacter, uid }) {
     if (char.race === "Half-Elf") {
       const abilityScore1 = event.target.halfElfScore1.value;
       const abilityScore2 = event.target.halfElfScore2.value;
+      const skill1 = event.target.halfElfSkill1.value;
+      const skill2 = event.target.halfElfSkill2.value;
+      let halfElfChar = tempChar;
       if (abilityScore1 === abilityScore2) {
         alert("Half-Elves cannot increase the same ability score twice!");
         return;
+      } else if ((skill1 = skill2)) {
+        alert("Please choose two different skills!");
+        return;
       } else {
-        setTempChar(increaseAbilityScoreByOne(abilityScore1));
-        setTempChar(increaseAbilityScoreByOne(abilityScore2));
+        skillsToAdd = [skill1, skill2]
+        halfElfChar = increaseAbilityScoreByOne(halfElfChar, abilityScore1);
+        halfElfChar = increaseAbilityScoreByOne(halfElfChar, abilityScore2);
+        halfElfChar = mergeSkillProf(halfElfChar, skillsToAdd);
+        setTempChar(halfElfChar);
       }
     } else if (char.race === "Dragonborn") {
       setTempChar({
-        ...char,
+        ...tempChar,
         dragonType: event.target.dragonType.value,
       });
     } else if (char.race === "Hill Dwarf" || char.race === "Mountain Dwarf") {
@@ -132,6 +145,7 @@ export default function NewChar({ handleNewCharacter, uid }) {
 
   function submitProficienciesForm(event) {
     event.preventDefault();
+    
   }
 
   if (step === 1) {
