@@ -146,7 +146,7 @@ function ProficienciesForm({ submitProficienciesForm, tempChar }) {
       <p>{text}</p>
       {skillCountingArray.map((count) => {
         return (
-          <select id={count} name={count}>
+          <select key={count} id={count} name={count}>
             {availableSkills.map((skill) => {
               return (
                 <option key={skill} value={skill}>
@@ -171,7 +171,7 @@ function ProficienciesForm({ submitProficienciesForm, tempChar }) {
         <p>{text}</p>
         {languageCountingArray.map((count) => {
           return (
-            <select id={count} name={count}>
+            <select key={count} id={count} name={count}>
               {availableLanguages.map((language) => {
                 return (
                   <option key={language} value={language}>
@@ -196,7 +196,7 @@ function ProficienciesForm({ submitProficienciesForm, tempChar }) {
         <p>{text}</p>
         {artisanToolsCountingArray.map((count) => {
           return (
-            <select id={count} name={count}>
+            <select key={count} id={count} name={count}>
               {availableArtisanTools.map((artisanTool) => {
                 return (
                   <option key={artisanTool} value={artisanTool}>
@@ -221,7 +221,7 @@ function ProficienciesForm({ submitProficienciesForm, tempChar }) {
         <p>{text}</p>
         {instrumentCountingArray.map((count) => {
           return (
-            <select id={count} name={count}>
+            <select key={count} id={count} name={count}>
               {availableInstruments.map((instrument) => {
                 return (
                   <option key={instrument} value={instrument}>

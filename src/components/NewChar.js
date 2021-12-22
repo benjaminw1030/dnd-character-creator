@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { raceMod, classMod, backgroundMod } from "../utilities/Mod";
 import { useFirestore } from "react-redux-firebase";
 import {
@@ -23,31 +23,15 @@ export default function NewChar({
   setStep,
 }) {
   const firestore = useFirestore();
-  // const [tempChar, setTempChar] = useState({});
-  // const [step, setStep] = useState(1);
   let formDisplay;
-  // function addCharacterToFirestore(event) {
-  //   event.preventDefault();
-  //   handleNewCharacter();
-  //   return firestore.collection('characters').add(
-  //     {
-  //     uid: uid,
-  //     name: event.target.name.value
-  //     }
-  //   )
-  // }
+
+  function addCharacterToFirestore(character) {
+    handleNewCharacter();
+    return firestore.collection("characters").add(character);
+  }
 
   function submitMainForm(event) {
     event.preventDefault();
-
-    // console.log(event.target)
-    // console.log(event.target.length)
-    for (let i = 0; i < event.target.length; i++) {
-      console.log(event.target[i].name);
-      console.log(event.target[i].value);
-    }
-    //   console.log(item.value)
-    // })
     const race = event.target.race.value;
     const charClass = event.target.class.value;
     const baseChar = {
@@ -95,7 +79,6 @@ export default function NewChar({
       },
     };
     const classRaceBackgroundChar = backgroundMod(classMod(raceMod(baseChar)));
-    // console.log(classRaceBackgroundChar);
     setTempChar(classRaceBackgroundChar);
     if (
       race === "Half-Elf" ||
@@ -128,7 +111,6 @@ export default function NewChar({
         halfElfChar = increaseAbilityScoreByOne(halfElfChar, abilityScore1);
         halfElfChar = increaseAbilityScoreByOne(halfElfChar, abilityScore2);
         halfElfChar = mergeSkillProf(halfElfChar, skillsToAdd);
-        console.log(halfElfChar);
         setTempChar(halfElfChar);
       }
     } else if (tempChar.race === "Dragonborn") {
@@ -136,14 +118,12 @@ export default function NewChar({
         ...tempChar,
         dragonType: event.target.dragonType.value,
       };
-      console.log(dragonbornChar);
       setTempChar(dragonbornChar);
     } else if (
       tempChar.race === "Hill Dwarf" ||
       tempChar.race === "Mountain Dwarf"
     ) {
       const dwarfChar = mergeToolProf(tempChar, [event.target.dwarfTool.value]);
-      console.log(dwarfChar);
       setTempChar(dwarfChar);
     }
     tempChar.class === "Monk" ? setStep(3) : setStep(4);
@@ -165,12 +145,10 @@ export default function NewChar({
       case "Shawm":
       case "Viol":
         monkChar = mergeInstrumentProf(tempChar, [tool]);
-        console.log(monkChar);
         setTempChar(monkChar);
         break;
       default:
         monkChar = mergeToolProf(tempChar, [tool]);
-        console.log(monkChar);
         setTempChar(monkChar);
     }
     setStep(4);
@@ -239,16 +217,8 @@ export default function NewChar({
         cha: finalChar.cha,
       },
     };
+    addCharacterToFirestore(charToSave);
     console.log(charToSave);
-    // console.log(finalChar);
-    // console.log(skills);
-    // console.log(artisanTools);
-    // console.log(instruments);
-    // console.log(languages);
-
-    // for (let i = 1; i <= tempChar.instrumentChoiceCount; i++) {
-    //   instruments.push(event.target.instrument{i})
-    // }
     setStep(1);
   }
 
