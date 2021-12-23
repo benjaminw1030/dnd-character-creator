@@ -105,3 +105,5 @@ All in all, I think you have a great setup here for 40 hours of work. Your MVP i
 * 12:46 PM Break for lunch.
 * 2:08 PM Back from lunch.
 * 4:55 PM End of day WIP: display character data.
+### 12/23/2021
+* 8:22 AM Resume work.
