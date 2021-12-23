@@ -92,8 +92,9 @@ export default function NewChar({
       setStep(2);
     } else if (charClass === "Monk") {
       setStep(3);
+    } else {
+      setStep(4);
     }
-    setStep(4);
   }
 
   function submitSpecialRaceForm(event) {
@@ -235,9 +236,23 @@ export default function NewChar({
         },
         weapon: {
           name: "unarmed strike",
+          damage: { max: 1, min: 1 },
+          magic: 0,
+          proficiency: [],
+          property: {
+            ammunition: null,
+            finesse: false,
+            heavy: false,
+            light: false,
+            loading: false,
+            range: 5,
+            reach: false,
+            thrown: false,
+            twoHanded: false,
+            versatile: null,
+            silvered: false,
+          },
           type: "bludgeoning",
-          damageDice: 1,
-          bonus: 0,
         },
         shield: {
           name: null,

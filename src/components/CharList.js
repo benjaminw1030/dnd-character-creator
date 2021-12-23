@@ -25,7 +25,7 @@ function CharList({ currentUserId, handleSelectCharacter }) {
           {characters.map((character) => {
             return (
               <li onClick={() => handleSelectCharacter(character)}>
-                {character.name}: Level {character.level} {character.class}
+                {character.name}: {character.race} {character.class} - Level {character.level}
               </li>
             );
           })}

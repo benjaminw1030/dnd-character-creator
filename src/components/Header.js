@@ -21,7 +21,7 @@ function Header() {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/account">Login</Link>
+          <Link to="/account">Account</Link>
         </li>
       </ul>
     </StyledWrapper>
