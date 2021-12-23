@@ -81,7 +81,6 @@ export default function NewChar({
       },
     };
     const classRaceBackgroundChar = backgroundMod(classMod(raceMod(baseChar)));
-    console.log(classRaceBackgroundChar);
     setTempChar(classRaceBackgroundChar);
     if (
       race === "Half-Elf" ||
@@ -199,7 +198,6 @@ export default function NewChar({
       ),
       skills
     );
-    console.log(finalChar);
     const charToSave = {
       ability: {
         cha: finalChar.cha,
@@ -307,7 +305,6 @@ export default function NewChar({
       xp: 0,
     };
     addCharacterToFirestore(charToSave);
-    console.log(charToSave);
     setStep(1);
   }
 

@@ -75,11 +75,10 @@ class Account extends React.Component {
           <div>
             <h1>Create a new account:</h1>
             <form onSubmit={this.doSignUp}>
-              <input type="text" name="userName" placeholder="User Name" />
               <input type="text" name="email" placeholder="email" />
-              <input type="text" name="password" placeholder="password" />
+              <input type="password" name="password" placeholder="password" />
               <input
-                type="text"
+                type="password"
                 name="confirmPassword"
                 placeholder="confirmPassword"
               />
