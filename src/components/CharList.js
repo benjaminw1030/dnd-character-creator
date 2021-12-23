@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useFirestoreConnect, isLoaded, isEmpty } from "react-redux-firebase";
 
-function CharList({ currentUserId }) {
+function CharList({ currentUserId, handleSelectCharacter }) {
   useFirestoreConnect([
     {
       collection: "characters",
@@ -24,7 +24,7 @@ function CharList({ currentUserId }) {
         <ul>
           {characters.map((character) => {
             return (
-              <li>
+              <li onClick={() => handleSelectCharacter(character)}>
                 {character.name}: Level {character.level} {character.class}
               </li>
             );

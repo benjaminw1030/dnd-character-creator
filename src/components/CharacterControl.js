@@ -16,21 +16,24 @@ function CharacterControl() {
   const character = null;
   const [shownComponent, setShownComponent] = useState("none");
   const auth = getAuth();
-  const [tempChar, setTempChar] = useState({});
+  const [selectedChar, setSelectedChar] = useState(null);
+  const [tempChar, setTempChar] = useState(null);
   const [step, setStep] = useState(1);
   let mainField;
 
   const handleNewCharacter = () => {
     setStep(1);
     setTempChar({});
-    setShownComponent("charList")
+    setShownComponent("charList");
   };
 
-  const handleSelectCharacter = () => {
-
-  }
+  const handleSelectCharacter = (character) => {
+    setSelectedChar(character);
+    setShownComponent("charInfo")
+  };
 
   const handleSaveCharacter = () => {};
+  const handleDeleteCharacter = () => {};
 
   if (!isLoaded(auth)) {
     mainField = (
@@ -47,19 +50,29 @@ function CharacterControl() {
   } else if (shownComponent === "newChar") {
     mainField = (
       <>
-        <NewChar handleNewCharacter={handleNewCharacter} uid={auth.currentUser.uid} step={step} setStep={setStep} tempChar={tempChar} setTempChar={setTempChar}/>
+        <NewChar
+          handleNewCharacter={handleNewCharacter}
+          uid={auth.currentUser.uid}
+          step={step}
+          setStep={setStep}
+          tempChar={tempChar}
+          setTempChar={setTempChar}
+        />
       </>
     );
   } else if (shownComponent === "charList") {
     mainField = (
       <>
-        <CharList currentUserId={auth.currentUser.uid}/>
+        <CharList
+          currentUserId={auth.currentUser.uid}
+          handleSelectCharacter={handleSelectCharacter}
+        />
       </>
     );
-  } else if (character != null && shownComponent === "charInfo") {
+  } else if (selectedChar != null && shownComponent === "charInfo") {
     mainField = (
       <>
-        <CharInfo />
+        <CharInfo character={selectedChar}/>
       </>
     );
   } else {

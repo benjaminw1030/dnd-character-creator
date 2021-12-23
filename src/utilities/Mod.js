@@ -48,6 +48,7 @@ export function raceMod(char) {
         languages: ["Common", "Elvish"],
         skillProf: ["Perception"],
         weaponProf: ["longsword", "shortsword", "shortbow", "longbow"],
+        spellcaster: true,
       };
     case "High Elf":
       return {
@@ -80,6 +81,7 @@ export function raceMod(char) {
         speed: 25,
         size: "small",
         languages: ["Common", "Gnomish"],
+        spellcaster: true,
       };
     case "Rock Gnome":
       return {
@@ -150,6 +152,7 @@ export function raceMod(char) {
         speed: 30,
         size: "medium",
         languages: ["Common", "Infernal"],
+        spellcaster: true,
       };
     default:
       return char;
@@ -231,6 +234,8 @@ export function classMod(char) {
           "Survival",
         ],
         skillChoiceCount: char.skillChoiceCount + 3,
+        spellcaster: true,
+        spellAbility: "Charisma"
       };
     case "Cleric":
       char = calc.mergeWeaponProf(char, ["simple weapons"]);
@@ -259,6 +264,8 @@ export function classMod(char) {
           "Religion",
         ],
         skillChoiceCount: char.skillChoiceCount + 2,
+        spellcaster: true,
+        spellAbility: "Wisdom"
       };
     case "Druid":
       char = calc.mergeLanguages(char, ["Druidic"]);
@@ -303,6 +310,8 @@ export function classMod(char) {
           "Survival",
         ],
         skillChoiceCount: char.skillChoiceCount + 2,
+        spellcaster: true,
+        spellAbility: "Wisdom"
       };
     case "Fighter":
       char = calc.mergeWeaponProf(char, ["simple weapons", "martial weapons"]);
@@ -480,6 +489,8 @@ export function classMod(char) {
           "Religion",
         ],
         skillChoiceCount: char.skillChoiceCount + 2,
+        spellcaster: true,
+        spellAbility: "Charisma"
       };
     case "Warlock":
       char = calc.mergeWeaponProf(char, ["simple weapons"]);
@@ -506,6 +517,8 @@ export function classMod(char) {
           "Religion",
         ],
         skillChoiceCount: char.skillChoiceCount + 2,
+        spellcaster: true,
+        spellAbility: "Charisma"
       };
     case "Wizard":
       char = calc.mergeWeaponProf(char, [
@@ -536,6 +549,8 @@ export function classMod(char) {
           "Religion",
         ],
         skillChoiceCount: char.skillChoiceCount + 2,
+        spellcaster: true,
+        spellAbility: "Intelligence"
       };
     default:
       return char;

@@ -6,6 +6,10 @@ export function calcStartingHP(char, hp) {
   }
 }
 
+export function calcAbilityModifier(ability) {
+  return Math.floor((ability - 10) / 2);
+}
+
 export function mergeSkillProf(char, skills) {
   skills.forEach((skill) => {
     if (char.skillProf.includes(skill)) {
@@ -93,5 +97,5 @@ export function increaseAbilityScoreByOne(char, score) {
 }
 
 export function isUniqueArray(array) {
-  return array.length === new Set(array).size
+  return array.length === new Set(array).size;
 }

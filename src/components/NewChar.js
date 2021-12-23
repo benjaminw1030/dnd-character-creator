@@ -53,6 +53,8 @@ export default function NewChar({
       toolProf: [],
       instrumentProf: [],
       skillSelection: [],
+      spellcaster: false,
+      spellAbility: null,
       str: {
         score: parseInt(event.target.str.value),
         save: false,
@@ -209,13 +211,56 @@ export default function NewChar({
       alignment: finalChar.alignment,
       background: finalChar.background,
       class: finalChar.class,
+      description: {
+        age: null,
+        additional: null,
+        allies: null,
+        appearance: null,
+        backstory: null,
+        eyes: null,
+        hair: null,
+        height: null,
+        organizations: null,
+        skin: null,
+        symbol: null,
+        treasure: null,
+        weight: null,
+      },
       dragonType: finalChar.dragonType,
+      equipment: {
+        armor: {
+          name: null,
+          type: null,
+          bonus: null,
+        },
+        weapon: {
+          name: "unarmed strike",
+          type: "bludgeoning",
+          damageDice: 1,
+          bonus: 0,
+        },
+        shield: {
+          name: null,
+          bonus: null,
+        },
+      },
       hp: {
         current: finalChar.currentHP,
         max: finalChar.maxHP,
       },
+      inventory: {
+        weapons: [],
+        armor: [],
+        gold: 0,
+      },
       level: 1,
       name: finalChar.name,
+      personality: {
+        traits: null,
+        ideals: null,
+        bonds: null,
+        flaws: null,
+      },
       proficiency: {
         armor: finalChar.armorProf,
         instruments: finalChar.instrumentProf,
@@ -227,7 +272,24 @@ export default function NewChar({
       race: finalChar.race,
       size: finalChar.size,
       speed: finalChar.speed,
+      spellcaster: finalChar.spellcaster,
+      magic: {
+        spellAbility: finalChar.spellAbility,
+        spells: {
+          level0: [],
+          level1: [],
+          level2: [],
+          level3: [],
+          level4: [],
+          level5: [],
+          level6: [],
+          level7: [],
+          level8: [],
+          level9: [],
+        },
+      },
       uid: finalChar.uid,
+      xp: 0,
     };
     addCharacterToFirestore(charToSave);
     console.log(charToSave);
