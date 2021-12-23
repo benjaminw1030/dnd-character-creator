@@ -8,22 +8,34 @@ const CharacterCreatorHeader = styled.h1`
   color: white;
 `;
 
+const CharacterCreatorList = styled.ul`
+  font-size: 18px;
+  list-style: none;
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+  a:link, a:visited {
+    color: white;
+  }
+`;
+
 const StyledWrapper = styled.section`
-  background-color: orange;
+  background-color: darkBlue
 `;
 
 function Header() {
   return (
     <StyledWrapper>
-      <CharacterCreatorHeader>Character Creator</CharacterCreatorHeader>
-      <ul>
+      <CharacterCreatorHeader>Dungeons and Dragons 5th Edition Character Creator</CharacterCreatorHeader>
+      <CharacterCreatorList>
         <li>
           <Link to="/">Home</Link>
         </li>
         <li>
           <Link to="/account">Account</Link>
         </li>
-      </ul>
+      </CharacterCreatorList>
     </StyledWrapper>
   );
 }

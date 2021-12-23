@@ -137,28 +137,28 @@ function ProficienciesForm({ submitProficienciesForm, tempChar }) {
   }
 
   if (tempChar.skillChoiceCount) {
-  let text = "Select a skill.";
-  if (tempChar.skillChoiceCount > 1) {
-    text = `Select ${tempChar.skillChoiceCount} different skills.`;
-  }
-  skillSelect = (
-    <div>
-      <p>{text}</p>
-      {skillCountingArray.map((count) => {
-        return (
-          <select key={count} id={count} name={count}>
-            {availableSkills.map((skill) => {
-              return (
-                <option key={skill} value={skill}>
-                  {skill}
-                </option>
-              );
-            })}
-          </select>
-        );
-      })}
-    </div>
-  );
+    let text = "Select a skill.";
+    if (tempChar.skillChoiceCount > 1) {
+      text = `Select ${tempChar.skillChoiceCount} different skills.`;
+    }
+    skillSelect = (
+      <div>
+        <p>{text}</p>
+        {skillCountingArray.map((count) => {
+          return (
+            <select key={count} id={count} name={count} required>
+              {availableSkills.map((skill) => {
+                return (
+                  <option key={skill} value={skill}>
+                    {skill}
+                  </option>
+                );
+              })}
+            </select>
+          );
+        })}
+      </div>
+    );
   }
 
   if (tempChar.languageChoiceCount) {
@@ -171,7 +171,7 @@ function ProficienciesForm({ submitProficienciesForm, tempChar }) {
         <p>{text}</p>
         {languageCountingArray.map((count) => {
           return (
-            <select key={count} id={count} name={count}>
+            <select key={count} id={count} name={count} required>
               {availableLanguages.map((language) => {
                 return (
                   <option key={language} value={language}>
@@ -196,7 +196,7 @@ function ProficienciesForm({ submitProficienciesForm, tempChar }) {
         <p>{text}</p>
         {artisanToolsCountingArray.map((count) => {
           return (
-            <select key={count} id={count} name={count}>
+            <select key={count} id={count} name={count} required>
               {availableArtisanTools.map((artisanTool) => {
                 return (
                   <option key={artisanTool} value={artisanTool}>
@@ -221,7 +221,7 @@ function ProficienciesForm({ submitProficienciesForm, tempChar }) {
         <p>{text}</p>
         {instrumentCountingArray.map((count) => {
           return (
-            <select key={count} id={count} name={count}>
+            <select key={count} id={count} name={count} required>
               {availableInstruments.map((instrument) => {
                 return (
                   <option key={instrument} value={instrument}>

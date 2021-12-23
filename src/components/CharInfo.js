@@ -2,7 +2,7 @@ import React from "react";
 import { calcAbilityModifier } from "../utilities/Calc";
 import { calcSkillModifier } from "../utilities/Calc";
 
-export default function CharInfo({ character }) {
+export default function CharInfo({ character, handleDeleteCharacter }) {
   const proficiencyBonus =
     character.level < 5
       ? 2
@@ -218,6 +218,7 @@ export default function CharInfo({ character }) {
       <p>
         Weapon: {weaponString}
       </p>
+      <button onClick={() => handleDeleteCharacter(character.id)}>Delete Character</button>
     </div>
   );
   //add ddl to change weapons

@@ -6,7 +6,7 @@ function SpecialRaceForm({ tempChar, submitSpecialRaceForm }) {
     raceSelect = (
       <div>
         <label htmlFor="dragonbornType">Select a dragonborn type</label>
-        <select id="dragonType" name="dragonType">
+        <select id="dragonType" name="dragonType" required>
           <option value="Black">Black</option>
           <option value="Blue">Blue</option>
           <option value="Brass">Brass</option>
@@ -27,7 +27,7 @@ function SpecialRaceForm({ tempChar, submitSpecialRaceForm }) {
     raceSelect = (
       <div>
         <label htmlFor="dwarfTool">Select extra dwarf tool proficiency</label>
-        <select id="dwarfTool" name="dwarfTool">
+        <select id="dwarfTool" name="dwarfTool" required>
           <option value="Smith's tools">Smith's tools</option>
           <option value="Brewer supplies">Brewer supplies</option>
           <option value="Mason's tools">Mason's tools</option>
@@ -67,7 +67,7 @@ function SpecialRaceForm({ tempChar, submitSpecialRaceForm }) {
           Half Elves may increase two extra abilty scores other than charisma.
         </p>
         <label htmlFor="halfElfScore1">First ability:</label>
-        <select id="halfElfScore1" name="halfElfScore1">
+        <select id="halfElfScore1" name="halfElfScore1" required>
           <option value="str">Strength</option>
           <option value="dex">Dexterity</option>
           <option value="con">Constitution</option>
@@ -75,7 +75,7 @@ function SpecialRaceForm({ tempChar, submitSpecialRaceForm }) {
           <option value="wis">Wisdom</option>
         </select>
         <label htmlFor="halfElfScore2">Second ability:</label>
-        <select id="halfElfScore2" name="halfElfScore2">
+        <select id="halfElfScore2" name="halfElfScore2" required>
           <option value="str">Strength</option>
           <option value="dex">Dexterity</option>
           <option value="con">Constitution</option>
@@ -84,15 +84,23 @@ function SpecialRaceForm({ tempChar, submitSpecialRaceForm }) {
         </select>
         <p>Half Elves may choose two extra skills.</p>
         <label htmlFor="halfElfSkill1">First skill:</label>
-        <select id="halfElfSkill1" name="halfElfSkill1">
+        <select id="halfElfSkill1" name="halfElfSkill1" required>
           {availableSkills.map((skill) => {
-            return <option key={skill} value={skill}>{skill}</option>;
+            return (
+              <option key={skill} value={skill}>
+                {skill}
+              </option>
+            );
           })}
         </select>
         <label htmlFor="halfElfSkill2">Second skill:</label>
-        <select id="halfElfSkill2" name="halfElfSkill2">
+        <select id="halfElfSkill2" name="halfElfSkill2" required>
           {availableSkills.map((skill) => {
-            return <option key={skill} value={skill}>{skill}</option>;
+            return (
+              <option key={skill} value={skill}>
+                {skill}
+              </option>
+            );
           })}
         </select>
       </div>

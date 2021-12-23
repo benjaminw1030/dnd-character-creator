@@ -14,7 +14,7 @@ function CharacterControl() {
   const firestore = useFirestore();
   // const dispatch = useDispatch();
   const character = null;
-  const [shownComponent, setShownComponent] = useState("none");
+  const [shownComponent, setShownComponent] = useState("");
   const auth = getAuth();
   const [selectedChar, setSelectedChar] = useState(null);
   const [tempChar, setTempChar] = useState(null);
@@ -33,7 +33,12 @@ function CharacterControl() {
   };
 
   const handleSaveCharacter = () => {};
-  const handleDeleteCharacter = () => {};
+
+  const handleDeleteCharacter = (id) => {
+    firestore.delete({collection: "characters", doc: id});
+    setSelectedChar(null);
+    setShownComponent("")
+  };
 
   if (!isLoaded(auth)) {
     mainField = (
@@ -72,7 +77,7 @@ function CharacterControl() {
   } else if (selectedChar != null && shownComponent === "charInfo") {
     mainField = (
       <>
-        <CharInfo character={selectedChar}/>
+        <CharInfo character={selectedChar} handleDeleteCharacter={handleDeleteCharacter}/>
       </>
     );
   } else {

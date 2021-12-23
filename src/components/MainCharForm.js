@@ -3,9 +3,9 @@ import React from "react";
 function MainCharForm({ submitMainForm }) {
   return (
     <form onSubmit={submitMainForm}>
-      <input type="text" name="name" placeholder="Character Name" />
+      <input type="text" name="name" placeholder="Character Name" required />
       <label htmlFor="alignment">Select Alignment</label>
-      <select id="alignment" name="alignment">
+      <select id="alignment" name="alignment" required>
         <option value="None">None</option>
         <option value="Lawful Good">Lawful Good</option>
         <option value="Neutral Good">Neutral Good</option>
@@ -18,7 +18,7 @@ function MainCharForm({ submitMainForm }) {
         <option value="Chaotic Evil">Chaotic Evil</option>
       </select>
       <label htmlFor="race">Select Race</label>
-      <select id="race" name="race">
+      <select id="race" name="race" required>
         <option value="Dragonborn">Dragonborn</option>
         <option value="Hill Dwarf">Dwarf (Hill Dwarf)</option>
         <option value="Mountain Dwarf">Dwarf (Mountain)</option>
@@ -35,7 +35,7 @@ function MainCharForm({ submitMainForm }) {
         <option value="Tiefling">Tiefling</option>
       </select>
       <label htmlFor="class">Select Class</label>
-      <select id="class" name="class">
+      <select id="class" name="class" required>
         <option value="Barbarian">Barbarian</option>
         <option value="Bard">Bard</option>
         <option value="Cleric">Cleric</option>
@@ -50,7 +50,7 @@ function MainCharForm({ submitMainForm }) {
         <option value="Wizard">Wizard</option>
       </select>
       <label htmlFor="background">Select Background</label>
-      <select id="background" name="background">
+      <select id="background" name="background" required>
         <option value="Acolyte">Acolyte</option>
         <option value="Charlatan">Charlatan</option>
         <option value="Criminal">Criminal</option>
@@ -73,6 +73,7 @@ function MainCharForm({ submitMainForm }) {
         min="3"
         max="18"
         step="1"
+        required
       />
       <input
         type="number"
@@ -81,6 +82,7 @@ function MainCharForm({ submitMainForm }) {
         min="3"
         max="18"
         step="1"
+        required
       />
       <input
         type="number"
@@ -89,6 +91,7 @@ function MainCharForm({ submitMainForm }) {
         min="3"
         max="18"
         step="1"
+        required
       />
       <input
         type="number"
@@ -97,6 +100,7 @@ function MainCharForm({ submitMainForm }) {
         min="3"
         max="18"
         step="1"
+        required
       />
       <input
         type="number"
@@ -105,6 +109,7 @@ function MainCharForm({ submitMainForm }) {
         min="3"
         max="18"
         step="1"
+        required
       />
       <input
         type="number"
@@ -113,6 +118,7 @@ function MainCharForm({ submitMainForm }) {
         min="3"
         max="18"
         step="1"
+        required
       />
       <button type="submit">Go to the next step!</button>
     </form>

@@ -46,9 +46,13 @@ function SpecialClassForm({ submitSpecialClassForm, tempChar }) {
       <label htmlFor="monkProf">
         Select an extra Monk tool/instrument proficiency
       </label>
-      <select id="monkProf" name="monkProf">
+      <select id="monkProf" name="monkProf" required>
         {editedTools.map((tool) => {
-          return <option key={tool} value={tool}>{tool}</option>;
+          return (
+            <option key={tool} value={tool}>
+              {tool}
+            </option>
+          );
         })}
       </select>
       <button type="submit">Go to the next step!</button>
